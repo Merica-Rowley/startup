@@ -6,6 +6,8 @@
 
 ### Design
 
+![Home Page Layout] (homepage.png)
+
 ### Key Features
 
 ### Technologies
