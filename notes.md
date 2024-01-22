@@ -102,7 +102,7 @@ Map domain names to IP addresses.
   
 After creating the new records, you should be able to access your page using the domain name, e.g. http://musicards.click
 
-## Caddy:
+## Caddy
 1. In Caddy file in server, change `:80` and `yourdomainhere` to match my domain name
 2. Enter command `sudo service caddy restart` to tell Caddy to restart
 3. Now site will have https instead of just http
