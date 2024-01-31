@@ -108,3 +108,90 @@ After creating the new records, you should be able to access your page using the
 3. Now site will have https instead of just http
 
 **Every site should be secure!** 
+
+## HTML 
+
+### Link References
+Absolute:
+`<a href="https://cs260.click/profile.png" />`
+Relative:
+`<a href="profile.png" />`
+`<a href="../images/profile.png" />`
+
+Note: Relative addresses are more maintainable (when they are within your own server)
+
+| Element | Meaning |
+| ---- | ---- |
+| html | The page container |
+| head | Header information |
+| title | Title of the page |
+| body | The entire content body of the page |
+| header | Header content |
+| main | Main content of the page |
+| footer | Footer of the main content |
+| section | A section of main content |
+| div | A block division of content |
+| span | An inline span of content |
+| h<1-9> | Text heading. From h1, the highest level, down to h9, the lowest level |
+| p | A paragraph of text |
+| table | Table |
+| ol,ul | Ordered or unordered list |
+| a | Anchor the text to a hyperlink |
+| img | Graphical image reference |
+
+| Character | Entity |
+| ---- | ---- |
+| & | \&amp; |
+| < | \&lt; |
+| > | \&gt; |
+| " | \&quot; |
+| ' | \&apos; |
+| 😀 | \&#128512; |
+
+## CSS
+### CSS Styles:
+- Can use "style" attribute within a specific element
+- Can define within style tags in the head element (for types of elements in general; applies to all elements of that type in the document)
+- Can link to a separate sheet ("stylesheet") where style is defined (also applies to all elements of that type in the document)
+
+### Common Selectors
+| Selector | Meaning | Example | Description |
+| ---- | ---- | ---- | ---- |
+| element | All elements of a specific name | p  <br>div | Any section that is a descendant of a body |
+| ID | The element with the given ID | \#root | The element with the attribute id=’root’ |
+| class | All elements with the given class | .highlight | Any element with the attribute class=’highlight’ |
+| element class | Any elements with the specific name and class | p.highlight | Any p element with the attribute class=’highlight’ |
+| List | Any of the given selectors | body,section | Body or section elements |
+| Descendant | A list of descendants | body section | Any section that is a descendant of a body |
+| Child | A list of direct children | section > p | Any p that is a direct child of a section |
+| Pseudo | state based | p:hover | The mouse is hovering over a p element |
+
+### Common Properties
+| Property | Value | Example | Discussion |
+| ---- | ---- | ---- | ---- |
+| background-color | color | red | Fill the background color |
+| border | color width style | \#fad solid medium | Sets the border using shorthand where any or all of the values may be provided |
+| color | color | rgb(128, 0, 0) | Sets the text color |
+| display | type | none | Defines how to display the element and its children |
+| font | family size style | Arial 1.2em bold | Defines the text font using shorthand |
+| margin | unit | 5px 5px 0 0 | Sets the margin spacing |
+| padding | unit | 1em 2em | Sets the padding spacing |
+
+### Common Units
+| Unit | Description |
+| ---- | ---- |
+| px | The number of pixels |
+| pt | The number of points (1/72 of an inch) |
+| % | A percentage of the parent element |
+| em | A multiplier of the width of the letter m in the parent's font |
+| rem | A multiplier of the width of the letter m in the root's font |
+| vw | A percentage of the viewport's width |
+| vh | A percentage of the viewport's height |
+| vmin | A percentage of the viewport's smaller dimension |
+| vmax | A percentage of the viewport's larger dimension |
+
+### Box Model
+- Content
+- Padding
+- Border
+- Margin
