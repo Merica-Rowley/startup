@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Musicards</title>
+    <link rel="icon" href="/site_images/Treble.ico">
 </head>
 
 <body>
@@ -24,11 +25,11 @@
     <main>
         <img src="/site_images/sheetmusic.jpg" alt="Sheet music" width="400">
         <h2>Welcome</h2>
-        <form method="post" action="quiz.html">
+        <form method="get" action="quiz.html">
             <label for="username">Username</label>
-            <input type="text" id="username" placeholder="Enter your username">
+            <input type="text" id="username" name="username" placeholder="Enter your username">
             <label for="password">Password</label>
-            <input type="password" id="password" placeholder="Password">
+            <input type="password" id="password" name="password" placeholder="Password">
             <button type="submit">Login</button>
             <button type="submit">Create</button>
         </form>
