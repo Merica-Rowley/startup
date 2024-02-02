@@ -148,6 +148,10 @@ Note: Relative addresses are more maintainable (when they are within your own se
 | ' | \&apos; |
 | 😀 | \&#128512; |
 
+### Deploying Code to Production Environment:
+Follow this pattern to use the deployFiles.sh executable in the terminal:
+`./deployFiles.sh -k <yourpemkey> -h <yourdomain> -s startup`
+
 ## CSS
 ### CSS Styles:
 - Can use "style" attribute within a specific element
