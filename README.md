@@ -38,8 +38,21 @@ I will use these technologies in the following ways:
 - **HTML**: Correctly use HTML to structure the application. Four HTML pages (home/login, information, quiz, leaderboard).
 - **CSS**: Ensure the application looks good on various screen sizes. Apply appropriate styling (color, font, whitespace, etc.).
 - **JavaScript**: Keeps track of score. Randomize and display answer choices and ensure that the correct answer is always among the options. Record users' input and determine if answer is correct. Backend endpoint calls.
-- **Web service**: Saves scores in database. Retrieves correct answers. Endpoints for login, saving scores, determining correct answers, and submitting answers.
+- **Web service**: Saves scores in database. Retrieves correct answers. Endpoints for login, saving scores, determining correct answers, and submitting answers. Third party service to pull random images to appear on leaderboard page.
 - **Authentication**: Securely register and login users. Authentication is required to play the game.
 - **Database persistence**: Store login credentials securely in a database. Store user's total (lifetime) and daily number of correct matches.
 - **WebSocket**: Broadcast username to other users when they begin a quiz session, e.g. "UserName started practicing with flashcards!"
 - **Web framework**: Use React to create components and request routing.
+
+## HTML Deliverable
+For this deliverable, I built the structure of my application with HTML.
+
+- HTML Pages: Four HTML pages that represent a home/login page, a quiz page, a leaderboard page, and an information (how to) page.
+- Use of HTML Tags: I used BODY, NAV, MAIN, HEADER, and FOOTER tags in my design.
+- Links: The navigation bar in the header links each page to the others. Also, when a user logs in, they are automatically sent to the quiz page.
+- Textual Content: I have added labels for login information, a brief introduction to reading music on the information page, and other content, such as the "streak" counter on the quiz page, throughout the application.
+- 3rd Party Service Calls: Represented by an image on the leaderboard page (eventually, the service will be called to get a random image for the page).
+- Images: Images are found on each page (sheet music on home page, labeled staffs on information page, random third party image on leaderboard page, and note image on quiz page).
+- Login: There are placeholders for the username and password input, as well as buttons to log in or create an account. On each page, the user's name is displayed with "Welcome, Username!"
+- Database: I have placeholder scores on the leaderboards, eventually, these will be actual scores that come from the database.
+- WebSocket: On the quiz page, I have inserted placeholder values for data that will be displayed in real-time with WebSocket (i.e. "User52 just started practicing with flashcards!").
