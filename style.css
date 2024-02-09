@@ -1,3 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap');
+
 body {
-    background-color: lightblue;
+    background-color: navy;
+    background-image: linear-gradient(rgba(0, 0, 128, 0.35), rgba(226, 226, 255, 0.35), rgba(35, 35, 201, 0.35)), url("/site_images/sheetmusic.jpg");
+    background-size: cover;
+}
+
+h1 {
+    font-family: 'Libre Baskerville', serif;
+    font-weight: 900;
 }
