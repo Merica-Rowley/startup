@@ -1,8 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap');
 
 body {
-    background-color: navy;
-    background-image: linear-gradient(rgba(0, 0, 128, 0.35), rgba(226, 226, 255, 0.35), rgba(35, 35, 201, 0.35)), url("/site_images/sheetmusic.jpg");
+    background-color: rgb(190, 206, 237);
+}
+
+.homePage {
+    background-image: linear-gradient(rgba(2, 33, 99, 0.35), rgba(2, 33, 99, 0.35), rgba(176, 196, 222, 0.35), rgba(176, 196, 222, 0.35), rgba(2, 33, 99, 0.35)), url("/site_images/sheetmusic.jpg");
     background-size: cover;
 }
 

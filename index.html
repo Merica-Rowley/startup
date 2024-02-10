@@ -12,32 +12,36 @@
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
-    <header>
-        <h1>Musicards</h1>
-        <nav>
-            <menu>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="quiz.html">Quiz</a></li>
-                <li><a href="scores.html">Scores</a></li>
-                <li><a href="info.html">Info</a></li>
-            </menu>
-        </nav>
-        <p>Welcome, Username!</p>
-        <hr />
-    </header>
-    <main>
-        <h2>Welcome</h2>
-        <form method="get" action="quiz.html">
-            <label for="username">Username</label>
-            <input type="text" id="username" name="username" placeholder="Enter your username">
-            <label for="password">Password</label>
-            <input type="password" id="password" name="password" placeholder="Password">
-            <button type="submit" class="btn btn-primary">Login</button>
-            <button type="submit" class="btn btn-secondary">Create</button>
-        </form>
+<body class="homePage">
+    <div class="container">
+        <header>
+            <h1>Musicards</h1>
+            <nav>
+                <menu class="nav nav-pills">
+                    <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="quiz.html">Quiz</a></li>
+                    <li class="nav-item"><a class="nav-link" href="scores.html">Scores</a></li>
+                    <li class="nav-item"><a class="nav-link" href="info.html">Info</a></li>
+                </menu>
+            </nav>
+            <p>Welcome, Username!</p>
+            <hr />
+        </header>
+    </div>
+    <main class="container">
+        <div>
+            <h2>Welcome</h2>
+            <form method="get" action="quiz.html">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" placeholder="Enter your username">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Password">
+                <button type="submit" class="btn btn-primary">Login</button>
+                <button type="submit" class="btn btn-secondary">Create</button>
+            </form>
+        </div>
     </main>
-    <footer>
+    <footer class="fixed-bottom">
         <!--Put in a link to LinkedIn?-->
         <hr />
         <p>Merica Rowley</p>
