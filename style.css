@@ -1,15 +1,73 @@
 @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap');
 
+* {
+    margin: 0;
+    border: 0;
+    padding: 0;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
 body {
-    background-color: rgb(190, 206, 237);
+    background-color: rgb(176, 222, 255);
 }
 
 .homePage {
-    background-image: linear-gradient(rgba(2, 33, 99, 0.35), rgba(2, 33, 99, 0.35), rgba(176, 196, 222, 0.35), rgba(176, 196, 222, 0.35), rgba(2, 33, 99, 0.35)), url("/site_images/sheetmusic.jpg");
+    display: flex;
+    background-image: linear-gradient(rgba(176, 222, 255, 0.1), rgba(190, 206, 237, 0.25)), url("/site_images/sheetmusic.jpg");
+    background-repeat: no-repeat;
+    min-height: 100vh;
     background-size: cover;
+    background-position: center;
 }
 
 h1 {
     font-family: 'Libre Baskerville', serif;
     font-weight: 900;
+}
+
+menu {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: space-around;
+}
+
+menu div {
+    padding: 2vh;
+}
+
+menu div a {
+    padding: 0.5em 1em;
+    background-color: #023c66;
+    border-radius: 10em;
+    color: aliceblue;
+    text-decoration: none;
+}
+
+menu div a:hover {
+    background-color: #012b48;
+}
+
+.active {
+    background-color: #0363a9;
+}
+
+header {
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header-container {
+    position: fixed;
+    top: 0;
+    width: 95%;
+    padding: 1% 2.5%;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #b0deff;
 }
