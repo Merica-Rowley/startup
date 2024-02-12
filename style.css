@@ -9,13 +9,13 @@
 
 body {
     background-color: rgb(176, 222, 255);
+    display: flex;
+    min-height: 100vh;
 }
 
 .homePage {
-    display: flex;
     background-image: linear-gradient(rgba(176, 222, 255, 0.1), rgba(190, 206, 237, 0.25)), url("/site_images/sheetmusic.jpg");
     background-repeat: no-repeat;
-    min-height: 100vh;
     background-size: cover;
     background-position: center;
 }
@@ -58,6 +58,7 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
+    color: #012b48;
 }
 
 .header-container {
@@ -70,4 +71,28 @@ header {
     justify-content: space-between;
     align-items: center;
     background-color: #b0deff;
+}
+
+footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 98%;
+    padding: 0% 1%;
+    height: 5%;
+    color: aliceblue;
+    background-color: #0363a9;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+footer p {
+    text-align: left;
+}
+
+footer a {
+    text-align: right;
+    color: aliceblue;
+    text-decoration: none;
 }
