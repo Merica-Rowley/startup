@@ -1,0 +1,136 @@
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap');
+
+* {
+    margin: 0;
+    border: 0;
+    padding: 0;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+body {
+    background-color: rgb(176, 222, 255);
+    display: flex;
+    min-height: 100vh;
+}
+
+.homePage {
+    background-image: linear-gradient(rgba(176, 222, 255, 0.2), rgba(190, 206, 237, 0.5)), url("/site_images/sheetmusic.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+h1 {
+    font-family: 'Libre Baskerville', serif;
+    font-weight: 900;
+}
+
+menu {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: space-around;
+}
+
+menu div {
+    padding: 2vh;
+}
+
+.button {
+    padding: 0.5em 1em;
+    background-color: #023c66;
+    border-radius: 10em;
+    color: aliceblue;
+    text-decoration: none;
+}
+
+menu div a:hover {
+    background-color: #012b48;
+}
+
+.active {
+    background-color: #0363a9;
+}
+
+header {
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #012b48;
+}
+
+.header-container {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 1% 2.5%;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #b0deff;
+    border-bottom: 5px solid #012b48;
+}
+
+/*- - - - - - - - - - - - - - - - - - - - -*/
+
+main {
+    position: relative;
+    top: 100vh;
+    width: 100%;
+    /* display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center; */
+}
+
+.login {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: linear-gradient(rgba(3, 99, 169, 0.3), rgba(3, 99, 169, 0.3));
+    width: 25%;
+}
+
+
+
+/*
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    justify-content: center;
+    padding: 5%;
+    background-color: rgba(3, 99, 169, 0.5);
+    border: 3px solid #023c66;
+    border-radius: 10%;
+    color: aliceblue;
+*/
+
+
+/*- - - - - - - - - - - - - - - - - - - - -*/
+footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 98%;
+    padding: 0% 1%;
+    height: 5%;
+    color: aliceblue;
+    background-color: #0363a9;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+footer p {
+    text-align: left;
+}
+
+footer a {
+    text-align: right;
+    color: aliceblue;
+    text-decoration: none;
+}
