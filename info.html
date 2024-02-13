@@ -14,16 +14,16 @@
 
 <body>
     <div>
-        <header class="fixed-top">
+        <header class="static-top">
             <nav class="navbar navbar-expand-md bg-body-tertiary">
                 <div class="container-fluid">
                     <a class="navbar-brand" href="#">Musicards</a>
                     <div class="collapse navbar-collapse">
                         <ul class="navbar-nav nav-pills me-auto mb-2 mb-lg-0">
-                            <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+                            <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
                             <li class="nav-item"><a class="nav-link" href="quiz.html">Quiz</a></li>
                             <li class="nav-item"><a class="nav-link" href="scores.html">Scores</a></li>
-                            <li class="nav-item"><a class="nav-link" href="info.html">Info</a></li>
+                            <li class="nav-item"><a class="nav-link active" href="info.html">Info</a></li>
                         </ul>
                         <p id="user-welcome">Welcome,
                             Username!</p>
@@ -35,21 +35,49 @@
         </header>
     </div>
     <main>
-        <h2>How to Read Sheet Music:</h2>
-        <p>Sheet music is typically rendered on a staff, which is comprised of five horizontal lines. Usually, notes are
-            placed in one of two different clefts, treble and bass. The note's value depends on where it is located in
-            the lines and spaces of the staff.</p>
-        <p>There are various different methods for distinguishing between notes, however, for our purposes, we will use
-            the letter naming system. That is, each note corresponds with either letter A, B, C, D, E, F, or G.</p>
-        <p>On the treble cleft, the notes on the lines (from top to bottom) are E, G, B, D, and F. The notes on the
-            spaces (from top to bottom) are F, A, C, and E.</p>
-        <p>On the bass cleft, the notes on the lines (from top to bottom) are G, B, D, F, and A. The notes on the spaces
-            (from top to bottom) are A, C, E, and G.</p>
-        <p>Following the same alphabetical pattern, notes can be located further above or below the staff, as well.
-            Ledger lines, spaced with the same distance as the horizontal lines on the staff, are used to mark how much
-            higher or lower a note is, relative to the notes on the staff.</p>
-        <img src="site_images/Labeled Treble.png" alt="A labeled treble cleft staff" width="500">
-        <img src="site_images/Labeled Bass.png" alt="A labeled bass cleft staff" width="500">
+        <div class="container-xxl">
+            <section class="row g-3 g-md-5 pb-md-5 mb-5 align-items-start" style="column-fill: balance;">
+                <div class="col-lg-6">
+                    <h2>How to Read Sheet Music:</h2>
+                    <p>Sheet music is typically rendered on a staff, which is comprised of five horizontal lines.
+                        Usually,
+                        notes
+                        are
+                        placed in one of two different clefts, treble and bass. The note's value depends on where it is
+                        located
+                        in
+                        the lines and spaces of the staff.</p>
+                    <p>There are various different methods for distinguishing between notes, however, for our purposes,
+                        we
+                        will
+                        use
+                        the letter naming system. That is, each note corresponds with either letter A, B, C, D, E, F, or
+                        G.
+                    </p>
+                    <p>On the treble cleft, the notes on the lines (from top to bottom) are E, G, B, D, and F. The notes
+                        on
+                        the
+                        spaces (from top to bottom) are F, A, C, and E.</p>
+                    <p>On the bass cleft, the notes on the lines (from top to bottom) are G, B, D, F, and A. The notes
+                        on
+                        the
+                        spaces
+                        (from top to bottom) are A, C, E, and G.</p>
+                    <p>Following the same alphabetical pattern, notes can be located further above or below the staff,
+                        as
+                        well.
+                        Ledger lines, spaced with the same distance as the horizontal lines on the staff, are used to
+                        mark
+                        how
+                        much
+                        higher or lower a note is, relative to the notes on the staff.</p>
+                </div>
+                <div class="col-lg-6">
+                    <img src="site_images/Labeled Treble.png" alt="A labeled treble cleft staff" class="staff-image">
+                    <img src="site_images/Labeled Bass.png" alt="A labeled bass cleft staff" class="staff-image">
+                </div>
+            </section>
+        </div>
     </main>
     <footer class="fixed-bottom container-fluid text-center">
         <div class="row align-items-end justify-content-between">

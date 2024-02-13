@@ -84,3 +84,13 @@ footer p {
     text-align: left;
     color: aliceblue;
 }
+
+.staff-image {
+    padding: 0;
+    margin: 0;
+    width: 100%;
+}
+
+main {
+    padding-top: 5vh;
+}
