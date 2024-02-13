@@ -14,7 +14,7 @@ body {
 }
 
 .homePage {
-    background-image: linear-gradient(rgba(176, 222, 255, 0.1), rgba(190, 206, 237, 0.25)), url("/site_images/sheetmusic.jpg");
+    background-image: linear-gradient(rgba(176, 222, 255, 0.2), rgba(190, 206, 237, 0.5)), url("/site_images/sheetmusic.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -37,7 +37,7 @@ menu div {
     padding: 2vh;
 }
 
-menu div a {
+.button {
     padding: 0.5em 1em;
     background-color: #023c66;
     border-radius: 10em;
@@ -64,15 +64,53 @@ header {
 .header-container {
     position: fixed;
     top: 0;
-    width: 95%;
+    width: 100%;
     padding: 1% 2.5%;
     display: flex;
     flex-wrap: nowrap;
     justify-content: space-between;
     align-items: center;
     background-color: #b0deff;
+    border-bottom: 5px solid #012b48;
 }
 
+/*- - - - - - - - - - - - - - - - - - - - -*/
+
+main {
+    position: relative;
+    top: 100vh;
+    width: 100%;
+    /* display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center; */
+}
+
+.login {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: linear-gradient(rgba(3, 99, 169, 0.3), rgba(3, 99, 169, 0.3));
+    width: 25%;
+}
+
+
+
+/*
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    justify-content: center;
+    padding: 5%;
+    background-color: rgba(3, 99, 169, 0.5);
+    border: 3px solid #023c66;
+    border-radius: 10%;
+    color: aliceblue;
+*/
+
+
+/*- - - - - - - - - - - - - - - - - - - - -*/
 footer {
     position: fixed;
     left: 0;

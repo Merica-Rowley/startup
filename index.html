@@ -16,10 +16,11 @@
                 <h1>Musicards</h1>
                 <nav>
                     <menu>
-                        <div><a class="active" href="index.html">Home</a></div>
-                        <div><a href="quiz.html">Quiz</a></div>
-                        <div><a href="scores.html">Scores</a></div>
-                        <div><a href="info.html">Info</a></div>
+                        <div><a class="active button" href="index.html">Home</a></div>
+                        <div><a class="button" href="index2.html">Home</a></div>
+                        <div><a class="button" href="quiz.html">Quiz</a></div>
+                        <div><a class="button" href="scores.html">Scores</a></div>
+                        <div><a class="button" href="info.html">Info</a></div>
                     </menu>
                 </nav>
                 <p>Welcome, Username!</p>
@@ -27,17 +28,27 @@
         </header>
     </div>
     <main>
-        <div>
-            <h2>Welcome</h2>
-            <form method="get" action="quiz.html">
-                <label for="username">Username</label>
-                <input type="text" id="username" name="username" placeholder="Enter your username">
-                <label for="password">Password</label>
-                <input type="password" id="password" name="password" placeholder="Password">
-                <button type="submit">Login</button>
-                <button type="submit">Create</button>
-            </form>
-        </div>
+        <section>
+            <div class="login">
+                <h2>Welcome</h2>
+                <form method="get" action="quiz.html">
+                    <div class="input">
+                        <div>
+                            <label for="username">Username</label>
+                            <input type="text" id="username" name="username" placeholder="Enter your username">
+                        </div>
+                        <div>
+                            <label for="password">Password</label>
+                            <input type="password" id="password" name="password" placeholder="Password">
+                        </div>
+                    </div>
+                    <div>
+                        <button class="button" type="submit">Login</button>
+                        <button class="button" type="submit">Create</button>
+                    </div>
+                </form>
+            </div>
+        </section>
     </main>
     <footer>
         <!--Put in a link to LinkedIn?-->
