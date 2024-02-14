@@ -47,12 +47,27 @@ I will use these technologies in the following ways:
 ## HTML Deliverable
 For this deliverable, I built the structure of my application with HTML.
 
-- HTML Pages: Four HTML pages that represent a home/login page, a quiz page, a leaderboard page, and an information (how to) page.
-- Use of HTML Tags: I used BODY, NAV, MAIN, HEADER, and FOOTER tags in my design.
-- Links: The navigation bar in the header links each page to the others. Also, when a user logs in, they are automatically sent to the quiz page.
-- Textual Content: I have added labels for login information, a brief introduction to reading music on the information page, and other content, such as the "streak" counter on the quiz page, throughout the application.
-- 3rd Party Service Calls: Represented by an image on the leaderboard page (eventually, the service will be called to get a random image for the page).
-- Images: Images are found on each page (sheet music on home page, labeled staffs on information page, random third party image on leaderboard page, and note image on quiz page).
-- Login: There are placeholders for the username and password input, as well as buttons to log in or create an account. On each page, the user's name is displayed with "Welcome, Username!"
-- Database: I have placeholder scores on the leaderboards, eventually, these will be actual scores that come from the database.
-- WebSocket: On the quiz page, I have inserted placeholder values for data that will be displayed in real-time with WebSocket (i.e. "User52 just started practicing with flashcards!").
+- HTML Pages: (COMPLETED) Four HTML pages that represent a home/login page, a quiz page, a leaderboard page, and an information (how to) page.
+- Use of HTML Tags: (COMPLETED) I used BODY, NAV, MAIN, HEADER, and FOOTER tags in my design.
+- Links: (COMPLETED) The navigation bar in the header links each page to the others. Also, when a user logs in, they are automatically sent to the quiz page.
+- Textual Content: (COMPLETED) I have added labels for login information, a brief introduction to reading music on the information page, and other content, such as the "streak" counter on the quiz page, throughout the application.
+- 3rd Party Service Calls: (COMPLETED) Represented by an image on the leaderboard page (eventually, the service will be called to get a random image for the page).
+- Images: (COMPLETED) Images are found on each page (sheet music on home page, labeled staffs on information page, random third party image on leaderboard page, and note image on quiz page).
+- Login: (COMPLETED) There are placeholders for the username and password input, as well as buttons to log in or create an account. On each page, the user's name is displayed with "Welcome, Username!"
+- Database: (COMPLETED) I have placeholder scores on the leaderboards, eventually, these will be actual scores that come from the database.
+- WebSocket: (COMPLETED) On the quiz page, I have inserted placeholder values for data that will be displayed in real-time with WebSocket (i.e. "User52 just started practicing with flashcards!").
+
+## CSS Deliverable
+For this deliverable, I styled my application with CSS.
+
+- Prerequisite: (COMPLETED) Simon CSS deployed to your production environment .
+- Prerequisite: (COMPLETED) A link to your GitHub startup repository prominently displayed on your application's home page.
+- Prerequisite: (COMPLETED) Notes in your startup Git repository README.md file documenting what you modified and added with this deliverable. The TAs will only grade things that have been clearly described as being completed. Review the voter app as an example.
+- Prerequisite: (COMPLETED) At least 10 git commits spread consistently throughout the assignment period.
+
+- Header, Footer, and Main Content Body: (COMPLETED) I used Bootstrap to style my header (navigation), footer (name and GitHub link), and main content (different for each page) elements of the body element. 
+- Navigation Elements: (COMPLETED) The text on my navigation changes color with hover. Also, an oval around the navigation element denotes the active page. 
+- Responsive to Window Resizing: (COMPLETED) The site looks good on devices of various dimensions. 
+- Application Elements: (COMPLETED) Buttons, images, tables, text, and other elements are styled using Bootstrap. I altered Bootstrap's color scheme for the buttons. Elements are responsive to window resizing.
+- Application Text Content: (COMPLETED) Text is displayed from the following font family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif. The text's color is either a very dark blue or a very light blue, depending its contrast with the surrounding elements.
+- Application Images: (COMPLETED) The home page is displayed with a background image. The placeholder image for the 3rd party service calls located on the leaderboard page has been styled and is ready to hold images. I resized the images for the information and quiz pages, as well.
