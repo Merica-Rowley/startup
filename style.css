@@ -104,14 +104,6 @@ footer p {
     color: aliceblue;
 }
 
-.staff-image {
-    padding: 0;
-    margin: 0;
-    height: 40vh;
-    max-height: 400px;
-    min-height: 250px;
-}
-
 main {
     padding-top: 90px;
     padding-bottom: 90px;
