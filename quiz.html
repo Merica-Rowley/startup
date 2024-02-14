@@ -10,14 +10,18 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
+    <!-- <script>
+        const toastElList = document.querySelectorAll('.toast')
+        const toastList = [...toastElList].map(toastEl => new bootstrap.Toast(toastEl, option))
+    </script> -->
 </head>
 
 <body>
     <div>
-        <header class="static-top">
-            <nav class="navbar navbar-expand-md bg-body-tertiary">
+        <header class="fixed-top">
+            <nav class="navbar navbar-expand bg-body-tertiary">
                 <div class="container-fluid">
-                    <a class="navbar-brand" href="#">Musicards</a>
+                    <a class="navbar-brand" href="index.html">Musicards</a>
                     <div class="collapse navbar-collapse">
                         <ul class="navbar-nav nav-pills me-auto mb-2 mb-lg-0">
                             <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
@@ -35,19 +39,45 @@
         </header>
     </div>
     <main>
-        <ul>
-            <li>User52 just started practicing with flashcards!</li>
-            <li>musicmatrix just started practicing with flashcards!</li>
-            <li>0074ghost just reached a streak of 50!</li>
-        </ul>
-        <p>Current Streak: 25</p>
-        <section>
-            <img src="/site_images/Treble - G4.png" alt="Image of G4 note" width="500">
-        </section>
-        <button>A</button>
-        <button>E</button>
-        <button>G</button>
-        <button>B</button>
+        <!-- These lines will be implemented with JavaScript to show, I will include some CSS placeholders below. -->
+        <!-- <div aria-live="polite" aria-atomic="true" position-relative">
+            <div class="toast-container top-0 end-0 p-3">
+                <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+                    <div class="toast-body">User52 just started practicing with flashcards!</div>
+                </div>
+                <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+                    <div class="toast-body">musicmatrix just started practicing with flashcards!</div>
+                </div>
+                <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+                    <div class="toast-body">0074ghost just reached a streak of 50!</div>
+                </div>
+            </div>
+        </div> -->
+
+        <div class="container-fluid d-flex column align-items-start">
+            <div class="container-fluid col-sm-9 row">
+                <p>User52 just started practicing with flashcards!</p>
+                <p>musicmatrix just started practicing with flashcards!</p>
+                <p>0074ghost just reached a streak of 50!</p>
+            </div>
+
+            <div class="col-sm-3 text-end">
+                <h4>Current Streak: 25</h4>
+            </div>
+        </div>
+
+        <div class="container position-relative align-items-center text-center mt-4 mb-5 py-5 px-0 rounded-3"
+            style="background-color: #012b48;">
+            <img class="img-fluid" src="/site_images/Treble - G4.png" alt="Image of G4 note" style="max-height: 50vh;">
+        </div>
+        <div class="container grid text-center">
+            <div class="row row-cols-sm-3 row-cols-md-5 gap-5 align-items-center justify-content-center">
+                <div class="col"><button class="btn btn-lg quiz-button">A</button></div>
+                <div class="col"><button class="btn btn-lg quiz-button">E</button></div>
+                <div class="col"><button class="btn btn-lg quiz-button">G</button></div>
+                <div class="col"><button class="btn btn-lg quiz-button">B</button></div>
+            </div>
+        </div>
     </main>
     <footer class="fixed-bottom container-fluid text-center">
         <div class="row align-items-end justify-content-between">

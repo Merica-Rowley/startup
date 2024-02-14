@@ -14,10 +14,10 @@
 
 <body>
     <div>
-        <header class="static-top">
-            <nav class="navbar navbar-expand-md bg-body-tertiary">
+        <header class="fixed-top">
+            <nav class="navbar navbar-expand bg-body-tertiary">
                 <div class="container-fluid">
-                    <a class="navbar-brand" href="#">Musicards</a>
+                    <a class="navbar-brand" href="index.html">Musicards</a>
                     <div class="collapse navbar-collapse">
                         <ul class="navbar-nav nav-pills me-auto mb-2 mb-lg-0">
                             <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
@@ -34,124 +34,134 @@
             </nav>
         </header>
     </div>
-    <main>
-        <h2>Daily Leaders:</h2>
-        <table>
-            <tr>
-                <th>Rank</th>
-                <th>Name</th>
-                <th>Score</th>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>Sally</td>
-                <td>853</td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>player1234</td>
-                <td>852</td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>qwerty</td>
-                <td>764</td>
-            </tr>
-            <tr>
-                <td>4</td>
-                <td>PianoPlayer35</td>
-                <td>853</td>
-            </tr>
-            <tr>
-                <td>5</td>
-                <td>lucky7</td>
-                <td>852</td>
-            </tr>
-            <tr>
-                <td>6</td>
-                <td>lalala3579</td>
-                <td>764</td>
-            </tr>
-            <tr>
-                <td>7</td>
-                <td>...</td>
-                <td>96</td>
-            </tr>
-            <tr>
-                <td>8</td>
-                <td>musicman37</td>
-                <td>40</td>
-            </tr>
-            <tr>
-                <td>9</td>
-                <td>88keyking</td>
-                <td>22</td>
-            </tr>
-            <tr>
-                <td>10</td>
-                <td>0074ghost</td>
-                <td>7</td>
-            </tr>
-        </table>
-        <h2>All-Time Leaders:</h2>
-        <table>
-            <tr>
-                <th>Rank</th>
-                <th>Name</th>
-                <th>Score</th>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>Beethoven621</td>
-                <td>750,458</td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>rosy20</td>
-                <td>432,676</td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>asdfghjkl;</td>
-                <td>123,456</td>
-            </tr>
-            <tr>
-                <td>4</td>
-                <td>rockstar55</td>
-                <td>87,630</td>
-            </tr>
-            <tr>
-                <td>5</td>
-                <td>Tricia</td>
-                <td>44,444</td>
-            </tr>
-            <tr>
-                <td>6</td>
-                <td>Zzzzz</td>
-                <td>31,415</td>
-            </tr>
-            <tr>
-                <td>7</td>
-                <td>17BlueGirl</td>
-                <td>25,987</td>
-            </tr>
-            <tr>
-                <td>8</td>
-                <td>JTBrick</td>
-                <td>21,753</td>
-            </tr>
-            <tr>
-                <td>9</td>
-                <td>cs260</td>
-                <td>14,789</td>
-            </tr>
-            <tr>
-                <td>10</td>
-                <td>dc636</td>
-                <td>11,315</td>
-            </tr>
-        </table>
-        <img src="site_images/thirdpartyplaceholder.jpg" alt="An image of a mountain landscape" width="500">
+    <main class="container-fluid">
+        <section class="container-fluid row d-flex justify-content-center gap-5 p-5">
+            <div class="col-5">
+                <h2>Daily Leaders:</h2>
+                <table class="table table-striped">
+                    <tr>
+                        <th>Rank</th>
+                        <th>Name</th>
+                        <th>Score</th>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>Sally</td>
+                        <td>853</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>player1234</td>
+                        <td>852</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>qwerty</td>
+                        <td>764</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>PianoPlayer35</td>
+                        <td>853</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>lucky7</td>
+                        <td>852</td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>lalala3579</td>
+                        <td>764</td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td>...</td>
+                        <td>96</td>
+                    </tr>
+                    <tr>
+                        <td>8</td>
+                        <td>musicman37</td>
+                        <td>40</td>
+                    </tr>
+                    <tr>
+                        <td>9</td>
+                        <td>88keyking</td>
+                        <td>22</td>
+                    </tr>
+                    <tr>
+                        <td>10</td>
+                        <td>0074ghost</td>
+                        <td>7</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="col-5">
+                <h2>All-Time Leaders:</h2>
+                <table class="table table-striped">
+                    <tr>
+                        <th>Rank</th>
+                        <th>Name</th>
+                        <th>Score</th>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>Beethoven621</td>
+                        <td>750,458</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>rosy20</td>
+                        <td>432,676</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>asdfghjkl;</td>
+                        <td>123,456</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>rockstar55</td>
+                        <td>87,630</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>Tricia</td>
+                        <td>44,444</td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>Zzzzz</td>
+                        <td>31,415</td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td>17BlueGirl</td>
+                        <td>25,987</td>
+                    </tr>
+                    <tr>
+                        <td>8</td>
+                        <td>JTBrick</td>
+                        <td>21,753</td>
+                    </tr>
+                    <tr>
+                        <td>9</td>
+                        <td>cs260</td>
+                        <td>14,789</td>
+                    </tr>
+                    <tr>
+                        <td>10</td>
+                        <td>dc636</td>
+                        <td>11,315</td>
+                    </tr>
+                </table>
+            </div>
+        </section>
+        <div class="static-bottom container-fluid">
+            <img class="image-fluid rounded-5" src="site_images/thirdpartyplaceholder.jpg"
+                alt="An image of a mountain landscape"
+                style="width: 100%; height: 30vh; min-height: 250px; object-fit: cover; object-position: 0% 20%;">
+        </div>
     </main>
     <footer class="fixed-bottom container-fluid text-center">
         <div class="row align-items-end justify-content-between">

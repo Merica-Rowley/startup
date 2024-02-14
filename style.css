@@ -3,6 +3,11 @@
     border: 0;
     padding: 0;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: #012b48;
+}
+
+html {
+    scroll-padding-top: 30px;
 }
 
 .btn-bd-primary {
@@ -19,6 +24,18 @@
     --bs-btn-font-weight: 600;
     --bs-btn-color: aliceblue;
     --bs-btn-bg: #6a8ca4;
+    --bs-btn-hover-color: aliceblue;
+    --bs-btn-hover-bg: #012b48;
+    --bs-btn-active-color: var(--bs-btn-hover-color);
+    --bs-btn-active-bg: #0095ff;
+}
+
+.quiz-button {
+    --bs-btn-font-weight: 600;
+    width: 2em;
+    --bs-btn-font-size: 5rem;
+    --bs-btn-color: aliceblue;
+    --bs-btn-bg: #0363a9;
     --bs-btn-hover-color: aliceblue;
     --bs-btn-hover-bg: #012b48;
     --bs-btn-active-color: var(--bs-btn-hover-color);
@@ -48,7 +65,8 @@
     color: aliceblue;
 }
 
-section {
+#info-page-content,
+#main-home-page {
     height: 100vh;
     display: flex;
     justify-content: center;
@@ -57,6 +75,7 @@ section {
 
 header {
     background-color: #b0deff;
+    top: 0;
 }
 
 .homePage {
@@ -88,10 +107,16 @@ footer p {
 .staff-image {
     padding: 0;
     margin: 0;
-    max-height: 40vh;
-    background-color: red;
+    height: 40vh;
+    max-height: 400px;
+    min-height: 250px;
 }
 
 main {
-    padding-top: 5vh;
+    padding-top: 90px;
+    padding-bottom: 90px;
+}
+
+.card {
+    border: none;
 }
