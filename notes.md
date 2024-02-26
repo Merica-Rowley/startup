@@ -199,3 +199,193 @@ Follow this pattern to use the deployFiles.sh executable in the terminal:
 - Padding
 - Border
 - Margin
+
+## JavaScript
+### Some Basic Functions:
+console.log()
+```
+console.log('hello %s', 'world');
+// OUTPUT: hello world
+console.log('%c JavaScript Demo', 'font-size:1.5em; color:green;');
+// OUTPUT: JavaScript Demo //in large green text
+```
+
+timers
+```
+console.time('demo time');
+// ... some code that takes a long time.
+console.timeEnd('demo time');
+// OUTPUT: demo time: 9762.74 ms
+```
+
+count()
+```
+console.count('a');
+// OUTPUT: a: 1
+console.count('a');
+// OUTPUT: a: 2
+console.count('b');
+// OUTPUT: b: 1
+```
+
+### Adding JS to HTML
+```
+<head>
+  <script src="javascript.js"></script>
+</head>
+<body>
+  <button onclick="sayHello()">Say Hello</button>
+  <button onclick="sayGoodbye()">Say Goodbye</button>
+  <script>
+    function sayGoodbye() {
+      alert('Goodbye');
+    }
+  </script>
+</body>
+```
+
+### Variables
+- Use let or const
+- Don't use var (depricated)
+
+### Types
+- Number
+- String
+- Boolean
+- Null
+- Undefined
+- BigInt
+- Symbol
+
+Object Types:
+- Object
+- Function
+- Date
+- Array
+- Map
+- JSON
+
+### Loops
+for
+```
+for (let i = 0; i < 2; i++) {
+  console.log(i);
+}
+// OUTPUT: 0 1
+```
+
+do while
+```
+let i = 0;
+do {
+  console.log(i);
+  i++;
+} while (i < 2);
+// OUTPUT: 0 1
+```
+
+while
+```
+let i = 0;
+while (i < 2) {
+  console.log(i);
+  i++;
+}
+// OUTPUT: 0 1
+```
+
+for in
+```
+const obj = { a: 1, b: 'fish' };
+for (const name in obj) {
+  console.log(name);
+}
+// OUTPUT: a
+// OUTPUT: b
+
+const arr = ['a', 'b'];
+for (const name in arr) {
+  console.log(name);
+}
+// OUTPUT: 0
+// OUTPUT: 1
+```
+
+for of
+```
+const arr = ['a', 'b'];
+for (const val of arr) {
+  console.log(val);
+}
+// OUTPUT: 'a'
+// OUTPUT: 'b'
+```
+
+### Strings
+```
+const s = 'Example:조선글';
+
+console.log(s.length);
+// OUTPUT: 11
+console.log(s.indexOf('조선글'));
+// OUTPUT: 8
+console.log(s.split(':'));
+// OUTPUT: ['Example', '조선글']
+console.log(s.startsWith('Ex'));
+// OUTPUT: true
+console.log(s.endsWith('조선글'));
+// OUTPUT: true
+console.log(s.toLowerCase());
+// OUTPUT: example:조선글
+```
+
+### Arrow Functions
+```
+  const arrow = () => 1; // No curly braces, so a return statement isn't necessary
+
+  const arrowWithBlock = (a) => {
+    a;
+  }; // This will return undefined becuase there is no return statement
+
+  const arrowWithReturn = (a) => {
+    return a;
+  };
+```
+
+### Array Functions
+| Function | Meaning | Example |
+| ---- | ---- | ---- |
+| push | 	Add an item to the end of the array | 	a.push(4) | 
+| pop | 	Remove an item from the end of the array | 	x = a.pop() | 
+| slice | 	Return a sub-array | 	a.slice(1,-1) | 
+| sort | 	Run a function to sort an array in place | 	a.sort((a,b) => b-a) | 
+| values | 	Creates an iterator for use with a for of loop | 	for (i of a.values()) {...} | 
+| find | 	Find the first item satisfied by a test function | 	a.find(i => i < 2) | 
+| forEach | 	Run a function on each array item | 	a.forEach(console.log) | 
+| reduce | 	Run a function to reduce each array item to a single item | 	a.reduce((a, c) => a + c) | 
+| map | 	Run a function to map an array to a new array | 	a.map(i => i+i) | 
+| filter | 	Run a function to remove items | 	a.filter(i => i%2) | 
+| every | 	Run a function to test if all items match | 	a.every(i => i < 3) | 
+| some | 	Run a function to test if any items match | 	a.some(i => 1 < 1) | 
+
+### Rest
+```
+function hasNumber(test, ...numbers) {
+  return numbers.some((i) => i === test);
+}
+
+hasNumber(2, 1, 2, 3);
+// RETURNS: true
+```
+
+### Spread
+```
+function person(firstName, lastName) {
+  return { first: firstName, last: lastName };
+}
+
+const p = person(...['Ryan', 'Dahl']);
+console.log(p);
+// OUTPUT: {first: 'Ryan', last: 'Dahl'}
+```
+
