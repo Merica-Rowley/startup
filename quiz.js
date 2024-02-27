@@ -28,12 +28,15 @@ const answerKey = [
     { image: "Treble - G5.png", answer: "G" },
 ];
 
+const possibleButtons = ["A", "B", "C", "D", "E", "F", "G"];
+
 class Quiz {
     allowUser;
     correctAnswer;
     currentImage;
     userAnswer;
     streak;
+    answeredCorrectly;
 
     constructor() {
         this.allowUser = false;
@@ -41,39 +44,61 @@ class Quiz {
         this.currentImage = null;
         this.userAnswer = null;
         this.streak = 0;
+        this.answeredCorrectly = null;
     }
 
-    checkAnswer() {
+    async pressButton(buttonPressed) {
+        this.userAnswer = buttonPressed.textContent
+        await this.checkAnswer();
+        this.streakManager();
+        this.questionSetUp();
+    }
 
+    changeButtonColor(color) {
+
+    }
+
+    async checkAnswer() {
+        return new Promise((resolve) => {
+            if (this.userAnswer === this.correctAnswer) {
+                this.answeredCorrectly = true;
+                // change img border to green for 0.5 seconds
+            }
+            else {
+                this.answeredCorrectly = false;
+                // change img border to red for 0.5 seconds
+            }
+            resolve(true);
+        })
+    }
+
+    populateButtons() {
+        console.log("populating buttons");
     }
 
     questionSetUp() {
         let answerIndex = Math.floor(Math.random() * 26);
         this.currentImage = answerKey[answerIndex].image;
         this.correctAnswer = answerKey[answerIndex].answer;
-        document.querySelector("#quiz-image").setAttribute("src", this.currentImage);
+        // document.querySelector("#quiz-image").setAttribute("src");
+        document.querySelector("#quiz-image").setAttribute("src", (`site_images/quiz_notes/${quiz.currentImage}`));
+        this.populateButtons();
     }
 
-    populateButtons(answer) {
-
-    }
-
-    streakManager(answeredCorrectly) {
-        if (answeredCorrectly) streak++;
+    streakManager() {
+        if (this.answeredCorrectly) this.streak++;
         else {
-            streak = 0;
+            this.streak = 0;
             // update database with new streak
         }
     }
 }
 
-quiz = new Quiz();
+const quiz = new Quiz();
 
 quiz.questionSetUp();
 
 document.querySelector("#quiz-image").setAttribute("src", (`site_images/quiz_notes/${quiz.currentImage}`));
-
-const possibleButtons = ["A", "B", "C", "D", "E", "F", "G"];
 
 const playerWelcomeElement = document.querySelector("#user-welcome");
 playerName = localStorage.getItem("username") ?? "";
