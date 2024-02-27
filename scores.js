@@ -81,7 +81,7 @@ let resetLimitTime = new Date(2024, 1, 1, 23, 58, 59, 999);
 setInterval(function () {
     let now = new Date();
 
-    if ((now.getHours() > resetTime.getHours()) && (now.getMinutes() > resetTime.getMinutes())) {
+    if ((now.getHours() > resetLimitTime.getHours()) && (now.getMinutes() > resetLimitTime.getMinutes())) {
         resetDailyBoard();
     }
 }, 1000)
