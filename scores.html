@@ -42,12 +42,16 @@
                         <h2 class="card-title">Daily Leaders:</h2>
                         <div class="card-text">
                             <table class="table table-striped">
-                                <tr>
-                                    <th>Rank</th>
-                                    <th>Name</th>
-                                    <th>Score</th>
-                                </tr>
-                                <tr>
+                                <thead>
+                                    <tr>
+                                        <th>Rank</th>
+                                        <th>Name</th>
+                                        <th>Score</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="daily-leaders"></tbody>
+                                <!-- 
+                                    <tr>
                                     <td>1</td>
                                     <td>Sally</td>
                                     <td>853</td>
@@ -97,6 +101,7 @@
                                     <td>0074ghost</td>
                                     <td>7</td>
                                 </tr>
+                                 -->
                             </table>
                         </div>
                     </div>
@@ -108,12 +113,16 @@
                         <h2 class="card-title">All-Time Leaders:</h2>
                         <div class="card-text">
                             <table class="table table-striped">
-                                <tr>
-                                    <th>Rank</th>
-                                    <th>Name</th>
-                                    <th>Score</th>
-                                </tr>
-                                <tr>
+                                <thead>
+                                    <tr>
+                                        <th>Rank</th>
+                                        <th>Name</th>
+                                        <th>Score</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="all-time-leaders"></tbody>
+                                <!-- 
+                                    <tr>
                                     <td>1</td>
                                     <td>Beethoven621</td>
                                     <td>750,458</td>
@@ -163,6 +172,7 @@
                                     <td>dc636</td>
                                     <td>11,315</td>
                                 </tr>
+                                 -->
                             </table>
                         </div>
                     </div>
@@ -183,6 +193,8 @@
             <a class="col-2" href="https://github.com/Merica-Rowley/startup">GitHub</a>
         </div>
     </footer>
+
+    <script src="scores.js"></script>
 </body>
 
 </html>
