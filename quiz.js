@@ -55,18 +55,20 @@ class Quiz {
     }
 
     changeButtonColor(color) {
-
+        document.getElementById("image-border").style.backgroundColor = color;
     }
 
     async checkAnswer() {
         return new Promise((resolve) => {
             if (this.userAnswer === this.correctAnswer) {
                 this.answeredCorrectly = true;
-                // change img border to green for 0.5 seconds
+                this.changeButtonColor("#007700")
+                setTimeout(() => this.changeButtonColor("#012b48"), 250);
             }
             else {
                 this.answeredCorrectly = false;
-                // change img border to red for 0.5 seconds
+                this.changeButtonColor("#770000")
+                setTimeout(() => this.changeButtonColor("#012b48"), 250);
             }
             resolve(true);
         })
@@ -80,7 +82,6 @@ class Quiz {
         let answerIndex = Math.floor(Math.random() * 26);
         this.currentImage = answerKey[answerIndex].image;
         this.correctAnswer = answerKey[answerIndex].answer;
-        // document.querySelector("#quiz-image").setAttribute("src");
         document.querySelector("#quiz-image").setAttribute("src", (`site_images/quiz_notes/${quiz.currentImage}`));
         this.populateButtons();
     }
@@ -91,14 +92,13 @@ class Quiz {
             this.streak = 0;
             // update database with new streak
         }
+        document.querySelector("#streak").textContent = this.streak;
     }
 }
 
 const quiz = new Quiz();
-
 quiz.questionSetUp();
 
-document.querySelector("#quiz-image").setAttribute("src", (`site_images/quiz_notes/${quiz.currentImage}`));
 
 const playerWelcomeElement = document.querySelector("#user-welcome");
 playerName = localStorage.getItem("username") ?? "";
