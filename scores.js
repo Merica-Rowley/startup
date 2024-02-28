@@ -60,11 +60,6 @@ function loadAllTimeScoreboard() {
     }
 }
 
-// function resetDailyBoard() {
-//     localStorage.removeItem("dailyScores");
-//     // localStorage.setItem("dailyScores", "");
-// }
-
 // Display of user welcome (exists across all pages)
 const playerWelcomeElement = document.querySelector("#user-welcome");
 playerName = localStorage.getItem("username") ?? "";
@@ -74,7 +69,7 @@ playerWelcomeElement.textContent = "Welcome " + playerName + "!";
 loadDailyScoreboard();
 loadAllTimeScoreboard();
 
-// Reset the daily leaderboard at 23:59
+// Reset the daily leaderboard after midnight
 setInterval(function () {
     let now = new Date();
 
