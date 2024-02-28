@@ -27,7 +27,7 @@ Here is the basic layout of the leaderboard page.
 ### Key Features
 
 - Quiz mode: Users will be presented with an image of a note on a sheet music staff. They will have four letter-name options to attempt to select the correct answer from. For each correct answer in a row, a user's "streak" will increase. Once a player selects an incorrect answer, their streak will reset.
-- Leaderboard: Two leaderboard displays will be shown on the leaderboard page—a daily leaderboard and an all-time leaderboard. Scores are determined by the number of correct matches a user completes in quiz mode (incorrect answers do not lower the score). A user's total number of matches is persistently stored in the database. The daily number of matches is also stored in the database, but is reset every night at midnight.
+- Leaderboard: Two leaderboard displays will be shown on the leaderboard page—a daily leaderboard and an all-time leaderboard. Scores are determined by the number of correct matches a user completes in quiz mode in a row (a.k.a. a "streak"). The top 10 all-time high scores and the top 10 daily scores is stored in the database. The daily scores are reset every night at midnight.
 - Information: A page with basic information on reading a music staff will be available to help users to learn.
 - Login: Secure login over HTTPS. 
 
@@ -60,10 +60,11 @@ For this deliverable, I built the structure of my application with HTML.
 ## CSS Deliverable
 For this deliverable, I styled my application with CSS.
 
-- Prerequisite: (COMPLETED) Simon CSS deployed to your production environment .
+- Prerequisite: (COMPLETED) Simon CSS deployed to your production environment.
 - Prerequisite: (COMPLETED) A link to your GitHub startup repository prominently displayed on your application's home page.
 - Prerequisite: (COMPLETED) Notes in your startup Git repository README.md file documenting what you modified and added with this deliverable. The TAs will only grade things that have been clearly described as being completed. Review the voter app as an example.
 - Prerequisite: (COMPLETED) At least 10 git commits spread consistently throughout the assignment period.
+
 
 - Header, Footer, and Main Content Body: (COMPLETED) I used Bootstrap to style my header (navigation), footer (name and GitHub link), and main content (different for each page) elements of the body element. 
 - Navigation Elements: (COMPLETED) The text on my navigation changes color with hover. Also, an oval around the navigation element denotes the active page. 
@@ -71,3 +72,18 @@ For this deliverable, I styled my application with CSS.
 - Application Elements: (COMPLETED) Buttons, images, tables, text, and other elements are styled using Bootstrap. I altered Bootstrap's color scheme for the buttons. Elements are responsive to window resizing.
 - Application Text Content: (COMPLETED) Text is displayed from the following font family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif. The text's color is either a very dark blue or a very light blue, depending its contrast with the surrounding elements.
 - Application Images: (COMPLETED) The home page is displayed with a background image. The placeholder image for the 3rd party service calls located on the leaderboard page has been styled and is ready to hold images. I resized the images for the information and quiz pages, as well.
+
+## JavaScript Deliverable
+For this deliverable, I implemented the logic of my application so that it works for a single user. I also implemented placeholders for future application features (i.e. WebSocket).
+
+Prerequisites:
+- Prerequisite: (COMPLETED) Simon JavaScript deployed to your production environment
+- Prerequisite: (COMPLETED) A link to your GitHub startup repository prominently displayed on your application's home page
+- Prerequisite: (COMPLETED) Notes in your startup Git repository README.md file documenting what you modified and added with this deliverable. The TAs will only grade things that have been clearly described as being completed. Review the voter app as an example.
+- Prerequisite: (COMPLETED) At least 10 git commits spread consistently throughout the assignment period.
+
+JavaScript Implementation:
+- Support for Future Login: Users can enter a username and "login". On login, users are redirected to the quiz page. Also, the user's username is displayed in a "Welcome" message in the top right corner of the application. Without being logged in, a user cannot play the quiz.
+- Support for Future Database Data: When a user scores within the daily or all-time top 10, their score is recorded in the local storage (in the future, the score will be recorded in the database). Scores on the leaderboards are loaded from the local storage. 
+- Support for Future WebSocket: I used an interval to periodically display a new message on the quiz page. These represent real-time messages sent via WebSocket in the future. 
+- Support for Application's Interaction Logic: I built the quiz logic, including populating the buttons (ensuring that no more than one of each possible button is displayed at a time and that the correct answer is among the options), checking a user's answer, incrementing or resetting a user's "streak" (depending on if they got the question right or not), and inserting high scores into the leaderboard. Also, the daily leaderboard resets every night at midnight. 
