@@ -114,10 +114,12 @@ class Quiz {
     }
 
     saveScore() {
-        const username = localStorage.getItem("username");
+        if (!this.streak === 0) {
+            const username = localStorage.getItem("username");
 
-        this.updateScores(username, "dailyScores");
-        this.updateScores(username, "allTimeScores");
+            this.updateScores(username, "dailyScores");
+            this.updateScores(username, "allTimeScores");
+        }
     }
 
     updateScores(username, scoreboard) {
@@ -162,4 +164,4 @@ const playerWelcomeElement = document.querySelector("#user-welcome");
 playerName = localStorage.getItem("username") ?? "";
 playerWelcomeElement.textContent = "Welcome " + playerName + "!";
 
-// INSERT WEBSOCKET PLACEHOLDER CODE HERE
+// WEBSOCKET PLACEHOLDER CONTENT
