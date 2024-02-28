@@ -54,7 +54,7 @@ class Quiz {
         this.questionSetUp();
     }
 
-    changeButtonColor(color) {
+    changeBorderColor(color) {
         document.getElementById("image-border").style.backgroundColor = color;
     }
 
@@ -62,13 +62,13 @@ class Quiz {
         return new Promise((resolve) => {
             if (this.userAnswer === this.correctAnswer) {
                 this.answeredCorrectly = true;
-                this.changeButtonColor("#007700")
-                setTimeout(() => this.changeButtonColor("#012b48"), 250);
+                this.changeBorderColor("#007700")
+                setTimeout(() => this.changeBorderColor("#012b48"), 250);
             }
             else {
                 this.answeredCorrectly = false;
-                this.changeButtonColor("#770000")
-                setTimeout(() => this.changeButtonColor("#012b48"), 250);
+                this.changeBorderColor("#770000")
+                setTimeout(() => this.changeBorderColor("#012b48"), 250);
             }
             resolve(true);
         })
@@ -88,7 +88,6 @@ class Quiz {
 
         for (let i = 0; i < 4; i++) {
             if (!buttonAssignment[i]) {
-                console.log(availableValues);
                 let buttonValueIndex = Math.floor(Math.random() * availableValues.length);
                 document.getElementById(`button_${i + 1}`).textContent = availableValues[buttonValueIndex];
                 availableValues.splice(buttonValueIndex, 1);
@@ -105,18 +104,59 @@ class Quiz {
     }
 
     streakManager() {
-        if (this.answeredCorrectly) this.streak++;
-        else {
+        if (this.answeredCorrectly) {
+            this.streak++;
+        } else {
+            this.saveScore(); // saves user's score to leaderboard (if applicable) before reseting the streak to 0
             this.streak = 0;
-            // update database with new streak
         }
         document.querySelector("#streak").textContent = this.streak;
+    }
+
+    saveScore() {
+        const username = localStorage.getItem("username");
+
+        this.updateScores(username, "dailyScores");
+        this.updateScores(username, "allTimeScores");
+    }
+
+    updateScores(username, scoreboard) {
+        let scores = [];
+        const scoresText = localStorage.getItem(scoreboard);
+        if (scoresText) {
+            scores = JSON.parse(scoresText);
+        }
+        scores = this.updateLeaderboard(username, this.streak, scores);
+
+        localStorage.setItem(scoreboard, JSON.stringify(scores));
+    }
+
+    updateLeaderboard(username, score, scores) {
+        const newScore = { username: username, score: score };
+
+        let found = false;
+        for (const [i, prevScore] of scores.entries()) {
+            if (score > prevScore.score) {
+                scores.splice(i, 0, newScore);
+                found = true;
+                break;
+            }
+        }
+
+        if (!found) {
+            scores.push(newScore);
+        }
+
+        if (scores.length > 10) {
+            scores.length = 10;
+        }
+
+        return scores;
     }
 }
 
 const quiz = new Quiz();
 quiz.questionSetUp();
-
 
 const playerWelcomeElement = document.querySelector("#user-welcome");
 playerName = localStorage.getItem("username") ?? "";
