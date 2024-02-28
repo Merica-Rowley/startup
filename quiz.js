@@ -75,7 +75,25 @@ class Quiz {
     }
 
     populateButtons() {
-        console.log("populating buttons");
+        let buttonAssignment = [false, false, false, false]
+
+        let correctButtonIndex = Math.floor(Math.random() * 4);
+        // Assign button at correctButtonIndex with the correct answer label
+        buttonAssignment[correctButtonIndex] = true;
+
+        document.getElementById(`button_${correctButtonIndex + 1}`).textContent = this.correctAnswer;
+
+        // Assign other buttons, check to ensure no duplicate values are used
+        let availableValues = possibleButtons.filter(x => x != this.correctAnswer);
+
+        for (let i = 0; i < 4; i++) {
+            if (!buttonAssignment[i]) {
+                console.log(availableValues);
+                let buttonValueIndex = Math.floor(Math.random() * availableValues.length);
+                document.getElementById(`button_${i + 1}`).textContent = availableValues[buttonValueIndex];
+                availableValues.splice(buttonValueIndex, 1);
+            }
+        }
     }
 
     questionSetUp() {
