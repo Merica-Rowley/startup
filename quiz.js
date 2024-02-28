@@ -36,6 +36,7 @@ class Quiz {
     userAnswer;
     streak;
     answeredCorrectly;
+    signedIn;
 
     constructor() {
         this.correctAnswer = null;
@@ -43,13 +44,19 @@ class Quiz {
         this.userAnswer = null;
         this.streak = 0;
         this.answeredCorrectly = null;
+        this.signedIn = localStorage.getItem("username");
     }
 
     async pressButton(buttonPressed) {
-        this.userAnswer = buttonPressed.textContent
-        await this.checkAnswer();
-        this.streakManager();
-        this.questionSetUp();
+        if (this.signedIn) { // ensures that only signed-in users can play the quiz
+            this.userAnswer = buttonPressed.textContent
+            await this.checkAnswer();
+            this.streakManager();
+            this.questionSetUp();
+        }
+        else {
+            alert("Please sign in to play!");
+        }
     }
 
     changeBorderColor(color) {
@@ -160,7 +167,11 @@ quiz.questionSetUp();
 
 const playerWelcomeElement = document.querySelector("#user-welcome");
 playerName = localStorage.getItem("username") ?? "";
-playerWelcomeElement.textContent = "Welcome " + playerName + "!";
+if (playerName) {
+    playerWelcomeElement.textContent = "Welcome " + playerName + "!";
+} else {
+    playerWelcomeElement.textContent = "Welcome!";
+}
 
 // WEBSOCKET PLACEHOLDER CONTENT
 setInterval(function () {

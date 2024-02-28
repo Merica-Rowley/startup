@@ -63,7 +63,11 @@ function loadAllTimeScoreboard() {
 // Display of user welcome (exists across all pages)
 const playerWelcomeElement = document.querySelector("#user-welcome");
 playerName = localStorage.getItem("username") ?? "";
-playerWelcomeElement.textContent = "Welcome " + playerName + "!";
+if (playerName) {
+    playerWelcomeElement.textContent = "Welcome " + playerName + "!";
+} else {
+    playerWelcomeElement.textContent = "Welcome!";
+}
 
 // Display leaderboard values from local storage
 loadDailyScoreboard();
