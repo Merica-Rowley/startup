@@ -31,7 +31,6 @@ const answerKey = [
 const possibleButtons = ["A", "B", "C", "D", "E", "F", "G"];
 
 class Quiz {
-    allowUser;
     correctAnswer;
     currentImage;
     userAnswer;
@@ -39,7 +38,6 @@ class Quiz {
     answeredCorrectly;
 
     constructor() {
-        this.allowUser = false;
         this.correctAnswer = null;
         this.currentImage = null;
         this.userAnswer = null;
@@ -114,7 +112,7 @@ class Quiz {
     }
 
     saveScore() {
-        if (!this.streak === 0) {
+        if (!(this.streak === 0)) {
             const username = localStorage.getItem("username");
 
             this.updateScores(username, "dailyScores");
@@ -165,3 +163,17 @@ playerName = localStorage.getItem("username") ?? "";
 playerWelcomeElement.textContent = "Welcome " + playerName + "!";
 
 // WEBSOCKET PLACEHOLDER CONTENT
+setInterval(function () {
+    const websocketElement = document.querySelector("#websocket-placeholder");
+    if (Math.random() > 0.5) {
+        websocketElement.innerHTML = '<p>User52 just started practicing with flashcards!</p>' + websocketElement.innerHTML;
+    }
+    else {
+        websocketElement.innerHTML = '<p>0074ghost just reached a streak of 50!</p>' + websocketElement.innerHTML;
+    }
+
+    while (websocketElement.children.length > 3) {
+        websocketElement.removeChild(websocketElement.lastChild);
+    }
+
+}, Math.floor((Math.random() * 5000) + 2000)) // output string between every 1-5 seconds

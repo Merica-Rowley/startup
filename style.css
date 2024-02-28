@@ -112,3 +112,14 @@ main {
 .card {
     border: none;
 }
+
+#websocket-placeholder p {
+    padding: 0.5vh;
+    border: 0;
+    margin: 0;
+    color: #6a8ca4;
+}
+
+#websocket-placeholder>p:first-child {
+    color: #012b48;
+}
