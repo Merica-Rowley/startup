@@ -21,8 +21,16 @@ apiRouter.get('/scores', (_req, res) => {
 
 // SubmitScore
 apiRouter.post('/score', (req, res) => {
-    scores = updateLeaderboard(req.body, scores);
-    res.send(scores);
+    scoreObject = JSON.parse(req.body);
+
+    if (scoreObject.leaderboard === "dailyScores") {
+        dailyScores = updateLeaderboard(req.body, dailyScores);
+        res.send(dailyScores);
+    }
+    else if (scoreObject.leaderboard === "allTimeScores") {
+        allTimeScores = updateLeaderboard(req.body, allTimeScores);
+        res.send(allTimeScores);
+    }
 });
 
 // Return the application's default page if the path is unknown
@@ -35,7 +43,8 @@ app.listen(port, () => {
 });
 
 
-let scores = [];
+let dailyScores = [];
+let allTimeScores = [];
 function updateLeaderboard(newScoreObject, scores) {
     let found = false;
     for (const [i, prevScore] of scores.entries()) {

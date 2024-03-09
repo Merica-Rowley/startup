@@ -127,24 +127,32 @@ class Quiz {
         }
     }
 
-    updateScores(username, scoreboard) {
+    async updateScores(username, scoreboard) {
+        const newScoreObject = { username: username, score: this.streak, leaderboard: scoreboard };
+
+        try {
+            const response = await fetch('/api/score', {
+                method: 'POST',
+                headers: { 'content-type': 'application/json' },
+                body: JSON.stringify(newScore),
+            });
+
+            // Store service response as leaderboard
+            const scores = await response.json();
+            localStorage.setItem(scoreboard, JSON.stringify(scores));
+        }
+        catch {
+            this.localUpdateLeaderboard(newScoreObject, scores, scoreboard);
+        }
+    }
+
+    localUpdateLeaderboard(newScoreObject, scores, scoreboard) {
         let scores = [];
         const scoresText = localStorage.getItem(scoreboard);
         if (scoresText) {
             scores = JSON.parse(scoresText);
         }
 
-        const newScoreObject = { username: username, score: this.streak };
-        try {
-
-        }
-        catch {
-            scores = this.updateLeaderboard(newScoreObject, scores);
-            localStorage.setItem(scoreboard, JSON.stringify(scores));
-        }
-    }
-
-    updateLeaderboard(newScoreObject, scores) {
         let found = false;
         for (const [i, prevScore] of scores.entries()) {
             if (score > prevScore.score) {
@@ -162,7 +170,7 @@ class Quiz {
             scores.length = 10;
         }
 
-        return scores;
+        localStorage.setItem(scoreboard, JSON.stringify(scores));
     }
 }
 
@@ -177,7 +185,7 @@ if (playerName) {
     playerWelcomeElement.textContent = "Welcome!";
 }
 
-// WEBSOCKET PLACEHOLDER CONTENT
+/////////////////////////////////// WEBSOCKET PLACEHOLDER CONTENT ///////////////////////////////////////
 setInterval(function () {
     const websocketElement = document.querySelector("#websocket-placeholder");
     if (Math.random() > 0.5) {
