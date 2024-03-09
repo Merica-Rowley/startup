@@ -21,7 +21,8 @@ apiRouter.get('/scores', (_req, res) => {
 
 // SubmitScore
 apiRouter.post('/score', (req, res) => {
-    scoreObject = JSON.parse(req.body);
+    // scoreObject = JSON.parse(req.body);
+    scoreObject = req.body;
 
     if (scoreObject.leaderboard === "dailyScores") {
         dailyScores = updateLeaderboard(req.body, dailyScores);
@@ -48,7 +49,7 @@ let allTimeScores = [];
 function updateLeaderboard(newScoreObject, scores) {
     let found = false;
     for (const [i, prevScore] of scores.entries()) {
-        if (score > prevScore.score) {
+        if (newScoreObject.score > prevScore.score) {
             scores.splice(i, 0, newScoreObject);
             found = true;
             break;

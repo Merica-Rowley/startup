@@ -134,7 +134,7 @@ class Quiz {
             const response = await fetch('/api/score', {
                 method: 'POST',
                 headers: { 'content-type': 'application/json' },
-                body: JSON.stringify(newScore),
+                body: JSON.stringify(newScoreObject),
             });
 
             // Store service response as leaderboard
@@ -142,20 +142,20 @@ class Quiz {
             localStorage.setItem(scoreboard, JSON.stringify(scores));
         }
         catch {
-            this.localUpdateLeaderboard(newScoreObject, scores, scoreboard);
+            this.localUpdateLeaderboard(newScoreObject, scoreboard);
         }
     }
 
-    localUpdateLeaderboard(newScoreObject, scores, scoreboard) {
+    localUpdateLeaderboard(newScoreObject) {
         let scores = [];
-        const scoresText = localStorage.getItem(scoreboard);
+        const scoresText = localStorage.getItem(newScoreObject.leaderboard);
         if (scoresText) {
             scores = JSON.parse(scoresText);
         }
 
         let found = false;
         for (const [i, prevScore] of scores.entries()) {
-            if (score > prevScore.score) {
+            if (newScoreObject.score > prevScore.score) {
                 scores.splice(i, 0, newScoreObject);
                 found = true;
                 break;
@@ -170,7 +170,7 @@ class Quiz {
             scores.length = 10;
         }
 
-        localStorage.setItem(scoreboard, JSON.stringify(scores));
+        localStorage.setItem(newScoreObject.leaderboard, JSON.stringify(scores));
     }
 }
 
