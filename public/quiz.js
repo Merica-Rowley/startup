@@ -133,25 +133,29 @@ class Quiz {
         if (scoresText) {
             scores = JSON.parse(scoresText);
         }
-        scores = this.updateLeaderboard(username, this.streak, scores);
 
-        localStorage.setItem(scoreboard, JSON.stringify(scores));
+        const newScoreObject = { username: username, score: this.streak };
+        try {
+
+        }
+        catch {
+            scores = this.updateLeaderboard(newScoreObject, scores);
+            localStorage.setItem(scoreboard, JSON.stringify(scores));
+        }
     }
 
-    updateLeaderboard(username, score, scores) {
-        const newScore = { username: username, score: score };
-
+    updateLeaderboard(newScoreObject, scores) {
         let found = false;
         for (const [i, prevScore] of scores.entries()) {
             if (score > prevScore.score) {
-                scores.splice(i, 0, newScore);
+                scores.splice(i, 0, newScoreObject);
                 found = true;
                 break;
             }
         }
 
         if (!found) {
-            scores.push(newScore);
+            scores.push(newScoreObject);
         }
 
         if (scores.length > 10) {
