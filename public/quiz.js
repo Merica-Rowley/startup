@@ -118,12 +118,12 @@ class Quiz {
         document.querySelector("#streak").textContent = this.streak;
     }
 
-    saveScore() {
+    async saveScore() {
         if (!(this.streak === 0)) {
             const username = localStorage.getItem("username");
 
-            this.updateScores(username, "dailyScores");
-            this.updateScores(username, "allTimeScores");
+            await this.updateScores(username, "dailyScores");
+            await this.updateScores(username, "allTimeScores");
         }
     }
 

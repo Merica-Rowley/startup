@@ -19,16 +19,32 @@ apiRouter.get('/scores', (_req, res) => {
     res.send(scores);
 });
 
+// // SubmitScore
+// apiRouter.post('/score', (req, res) => {
+//     // scoreObject = JSON.parse(req.body);
+//     // scoreObject = req.body;
+
+//     // if (scoreObject.leaderboard === "dailyScores") {
+//     //     dailyScores = updateLeaderboard(req.body, dailyScores);
+//     //     res.send(dailyScores);
+//     // }
+//     // else if (scoreObject.leaderboard === "allTimeScores") {
+//     //     allTimeScores = updateLeaderboard(req.body, allTimeScores);
+//     //     res.send(allTimeScores);
+//     // }
+
+//     updatedScoreboard = scoreHandler(req.body);
+//     res.send(updatedScoreboard);
+
+// });
+
 // SubmitScore
 apiRouter.post('/score', (req, res) => {
-    // scoreObject = JSON.parse(req.body);
-    scoreObject = req.body;
-
-    if (scoreObject.leaderboard === "dailyScores") {
+    if (req.body.leaderboard === "dailyScores") {
         dailyScores = updateLeaderboard(req.body, dailyScores);
         res.send(dailyScores);
     }
-    else if (scoreObject.leaderboard === "allTimeScores") {
+    else if (req.body.leaderboard === "allTimeScores") {
         allTimeScores = updateLeaderboard(req.body, allTimeScores);
         res.send(allTimeScores);
     }
@@ -46,6 +62,18 @@ app.listen(port, () => {
 
 let dailyScores = [];
 let allTimeScores = [];
+
+function scoreHandler(newScoreObject) {
+    if (newScoreObject.leaderboard === "dailyScores") {
+        dailyScores = updateLeaderboard(newScoreObject, dailyScores);
+        return dailyScores;
+    }
+    else if (newScoreObject.leaderboard === "allTimeScores") {
+        allTimeScores = updateLeaderboard(newScoreObject, allTimeScores);
+        return allTimeScores;
+    }
+}
+
 function updateLeaderboard(newScoreObject, scores) {
     let found = false;
     for (const [i, prevScore] of scores.entries()) {
