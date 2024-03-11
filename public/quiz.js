@@ -121,14 +121,14 @@ class Quiz {
     async saveScore() {
         if (!(this.streak === 0)) {
             const username = localStorage.getItem("username");
-
-            await this.updateScores(username, "dailyScores");
-            await this.updateScores(username, "allTimeScores");
+            const score = this.streak;
+            await this.updateScores(username, score, "dailyScores");
+            await this.updateScores(username, score, "allTimeScores");
         }
     }
 
-    async updateScores(username, scoreboard) {
-        const newScoreObject = { username: username, score: this.streak, leaderboard: scoreboard };
+    async updateScores(username, score, scoreboard) {
+        const newScoreObject = { username: username, score: score, leaderboard: scoreboard };
 
         try {
             const response = await fetch('/api/score', {

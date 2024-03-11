@@ -14,29 +14,15 @@ app.use(express.static('public'));
 const apiRouter = express.Router();
 app.use(`/api`, apiRouter);
 
-// GetScores
-apiRouter.get('/scores', (_req, res) => {
-    res.send(scores);
+// Get Daily Scores
+apiRouter.get('/scores/daily', (_req, res) => {
+    res.send(dailyScores);
 });
 
-// // SubmitScore
-// apiRouter.post('/score', (req, res) => {
-//     // scoreObject = JSON.parse(req.body);
-//     // scoreObject = req.body;
-
-//     // if (scoreObject.leaderboard === "dailyScores") {
-//     //     dailyScores = updateLeaderboard(req.body, dailyScores);
-//     //     res.send(dailyScores);
-//     // }
-//     // else if (scoreObject.leaderboard === "allTimeScores") {
-//     //     allTimeScores = updateLeaderboard(req.body, allTimeScores);
-//     //     res.send(allTimeScores);
-//     // }
-
-//     updatedScoreboard = scoreHandler(req.body);
-//     res.send(updatedScoreboard);
-
-// });
+// Get All Time Scores
+apiRouter.get('/scores/allTime', (_req, res) => {
+    res.send(allTimeScores);
+});
 
 // SubmitScore
 apiRouter.post('/score', (req, res) => {

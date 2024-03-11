@@ -1,45 +1,51 @@
-function loadDailyScoreboard() {
+async function loadDailyScoreboard() {
     let dailyScores = [];
-    const dailyScoresText = localStorage.getItem("dailyScores");
-    if (dailyScoresText) {
-        dailyScores = JSON.parse(dailyScoresText);
+    try {
+        // Get the latest high scores from the service
+        const response = await fetch('/api/scores/daily');
+        dailyScores = await response.json();
+
+        // Save the scores in case we go offline in the future
+        localStorage.setItem('dailyScores', JSON.stringify(dailyScores));
+    } catch {
+        // If there was an error then just use the last saved scores
+        const dailyScoresText = localStorage.getItem('dailyScores');
+        if (dailyScoresText) {
+            dailyScores = JSON.parse(dailyScoresText);
+        }
     }
 
     const dailyScoresTableElement = document.querySelector("#daily-leaders");
 
-    if (dailyScores.length) {
-        for (const [i, score] of dailyScores.entries()) {
-            const rankTableDataElement = document.createElement('td');
-            const nameTableDataElement = document.createElement('td');
-            const scoreTableDataElement = document.createElement('td');
-
-            rankTableDataElement.textContent = i + 1;
-            nameTableDataElement.textContent = score.username;
-            scoreTableDataElement.textContent = score.score;
-
-            const tableRowElement = document.createElement('tr');
-            tableRowElement.appendChild(rankTableDataElement);
-            tableRowElement.appendChild(nameTableDataElement);
-            tableRowElement.appendChild(scoreTableDataElement);
-
-            dailyScoresTableElement.appendChild(tableRowElement);
-        }
-    } else {
-        dailyScoresTableElement.innerHTML = "<tr>No one has scored yet!</tr>";
-    }
+    displayTable(dailyScores, dailyScoresTableElement);
 }
 
-function loadAllTimeScoreboard() {
+async function loadAllTimeScoreboard() {
     let allTimeScores = [];
-    const allTimeScoresText = localStorage.getItem("allTimeScores");
-    if (allTimeScoresText) {
-        allTimeScores = JSON.parse(allTimeScoresText);
+
+    try {
+        // Get the latest high scores from the service
+        const response = await fetch('/api/scores/allTime');
+        allTimeScores = await response.json();
+
+        // Save the scores in case we go offline in the future
+        localStorage.setItem('allTimeScores', JSON.stringify(allTimeScores));
+    } catch {
+        // If there was an error then just use the last saved scores
+        const allTimeScoresText = localStorage.getItem("allTimeScores");
+        if (allTimeScoresText) {
+            allTimeScores = JSON.parse(allTimeScoresText);
+        }
     }
 
     const allTimeScoresTableElement = document.querySelector("#all-time-leaders");
 
-    if (allTimeScores.length) {
-        for (const [i, score] of allTimeScores.entries()) {
+    displayTable(allTimeScores, allTimeScoresTableElement);
+}
+
+function displayTable(scores, tableElement) {
+    if (scores.length) {
+        for (const [i, score] of scores.entries()) {
             const rankTableDataElement = document.createElement('td');
             const nameTableDataElement = document.createElement('td');
             const scoreTableDataElement = document.createElement('td');
@@ -53,10 +59,10 @@ function loadAllTimeScoreboard() {
             tableRowElement.appendChild(nameTableDataElement);
             tableRowElement.appendChild(scoreTableDataElement);
 
-            allTimeScoresTableElement.appendChild(tableRowElement);
+            tableElement.appendChild(tableRowElement);
         }
     } else {
-        allTimeScoresTableElement.innerHTML = "<tr>No one has scored yet!</tr>";
+        tableElement.innerHTML = "<tr>No one has scored yet!</tr>";
     }
 }
 
