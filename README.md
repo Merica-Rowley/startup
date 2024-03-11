@@ -87,3 +87,19 @@ JavaScript Implementation:
 - Support for Future Database Data: (COMPLETED) When a user scores within the daily or all-time top 10, their score is recorded in the local storage (in the future, the score will be recorded in the database). Scores on the leaderboards are loaded from the local storage. 
 - Support for Future WebSocket: (COMPLETED) I used an interval to periodically display a new message on the quiz page. These represent real-time messages sent via WebSocket in the future. 
 - Support for Application's Interaction Logic: (COMPLETED) I built the quiz logic, including populating the buttons (ensuring that no more than one of each possible button is displayed at a time and that the correct answer is among the options), checking a user's answer, incrementing or resetting a user's "streak" (depending on if they got the question right or not), and inserting high scores into the leaderboard. Also, the daily leaderboard resets every night at midnight. 
+
+## Service Deliverable
+For this deliverable, I added backend endpoints that update and retrieve leaderboard scores.
+
+Prerequisites:
+- Prerequisite: (COMPLETED) Simon Service deployed to your production environment
+- Prerequisite: (COMPLETED) A link to your GitHub startup repository prominently displayed on your application's home page
+- Prerequisite: (COMPLETED) Notes in your startup Git repository README.md file documenting what you modified and added with this deliverable. The TAs will only grade things that have been clearly described as being completed. Review the voter app as an example.
+- Prerequisite: (COMPLETED) At least 10 git commits spread consistently throughout the assignment period.
+
+Service Implementation:
+- HTTP Service Using Node.js and Express: Done! 
+- Express Static Middleware to Serve Up Frontend: Done! 
+- Third-Party Service Endpoints: Done! I used Lorem Picsum's api to retrieve a random image to display on the scores page using a fetch method.
+- Backend Service Endpoints: Done! I have an endpoint to update (post) the scoreboard each time someone gets an answer wrong or navigates away from the quiz page. I also have an endpoint to retrieve (get) scores from the server when a user navigates to the scores page.
+- Frontend Calls Service Endpoints: Done! I used a fetch method in the frontend quiz.js updateScores() method to call my score posting endpoint in the backend, and I used a fetch method in the frontend scores.js loadDailyScoreboard() and loadAllTimeScoreboard() functions to call my score retrieval endpoint in the backend. 
