@@ -66,6 +66,27 @@ function displayTable(scores, tableElement) {
     }
 }
 
+// Display random image
+function displayImage() {
+    const random = Math.floor(Math.random() * 1000);
+    // Gets a random page between page 0 and 1000 with one image on it
+    fetch(`https://picsum.photos/v2/list?page=${random}&limit=1`)
+        .then((response) => response.json())
+        .then((data) => {
+            const containerEl = document.querySelector('#thirdpartypicture');
+
+            const width = containerEl.offsetWidth;
+            const height = containerEl.offsetHeight;
+
+            const imgUrl = `https://picsum.photos/id/${data[0].id}/${width}/${height}`;
+            const imgEl = document.createElement('img');
+            imgEl.setAttribute('src', imgUrl);
+            imgEl.setAttribute('class', "image-fluid rounded-5");
+            containerEl.appendChild(imgEl);
+        });
+}
+
+
 // Display of user welcome (exists across all pages)
 const playerWelcomeElement = document.querySelector("#user-welcome");
 playerName = localStorage.getItem("username") ?? "";
@@ -75,24 +96,7 @@ if (playerName) {
     playerWelcomeElement.textContent = "Welcome!";
 }
 
-// Display leaderboard values from local storage
+// Load and display leaderboard values
 loadDailyScoreboard();
 loadAllTimeScoreboard();
-
-// // Reset the daily leaderboard after midnight
-// setInterval(function () {
-//     let now = new Date();
-
-//     if (!localStorage.getItem("currentMidnight")) {
-//         let currentMidnight = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 23, 59, 59, 999)
-//         localStorage.setItem("currentMidnight", JSON.stringify(currentMidnight.getTime()));
-//     }
-
-//     // This will execute when the current time passes the time for midnight that is currently stored in the localStorage
-//     if (now.getTime() > JSON.parse(localStorage.getItem("currentMidnight"))) {
-//         localStorage.removeItem("dailyScores")
-
-//         let currentMidnight = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 23, 59, 59, 999)
-//         localStorage.setItem("currentMidnight", JSON.stringify(currentMidnight.getTime()));
-//     }
-// }, 1000);
+displayImage();

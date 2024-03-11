@@ -49,10 +49,8 @@ app.listen(port, () => {
 
 let dailyScores = [];
 let allTimeScores = [];
-// let currentMidnight = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 23, 59, 59, 999);
 let currentMidnight = new Date();
-// currentMidnight.setHours(23, 59, 59, 999);
-currentMidnight.setHours(12, 48, 0, 0);
+currentMidnight.setHours(23, 59, 59, 999);
 
 function updateLeaderboard(newScoreObject, scores) {
     let found = false;
