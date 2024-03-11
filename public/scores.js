@@ -79,20 +79,20 @@ if (playerName) {
 loadDailyScoreboard();
 loadAllTimeScoreboard();
 
-// Reset the daily leaderboard after midnight
-setInterval(function () {
-    let now = new Date();
+// // Reset the daily leaderboard after midnight
+// setInterval(function () {
+//     let now = new Date();
 
-    if (!localStorage.getItem("currentMidnight")) {
-        let currentMidnight = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 23, 59, 59, 999)
-        localStorage.setItem("currentMidnight", JSON.stringify(currentMidnight.getTime()));
-    }
+//     if (!localStorage.getItem("currentMidnight")) {
+//         let currentMidnight = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 23, 59, 59, 999)
+//         localStorage.setItem("currentMidnight", JSON.stringify(currentMidnight.getTime()));
+//     }
 
-    // This will execute when the current time passes the time for midnight that is currently stored in the localStorage
-    if (now.getTime() > JSON.parse(localStorage.getItem("currentMidnight"))) {
-        localStorage.removeItem("dailyScores")
+//     // This will execute when the current time passes the time for midnight that is currently stored in the localStorage
+//     if (now.getTime() > JSON.parse(localStorage.getItem("currentMidnight"))) {
+//         localStorage.removeItem("dailyScores")
 
-        let currentMidnight = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 23, 59, 59, 999)
-        localStorage.setItem("currentMidnight", JSON.stringify(currentMidnight.getTime()));
-    }
-}, 1000);
+//         let currentMidnight = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 23, 59, 59, 999)
+//         localStorage.setItem("currentMidnight", JSON.stringify(currentMidnight.getTime()));
+//     }
+// }, 1000);

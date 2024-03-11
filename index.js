@@ -16,6 +16,7 @@ app.use(`/api`, apiRouter);
 
 // Get Daily Scores
 apiRouter.get('/scores/daily', (_req, res) => {
+    resetMidnight();
     res.send(dailyScores);
 });
 
@@ -48,17 +49,10 @@ app.listen(port, () => {
 
 let dailyScores = [];
 let allTimeScores = [];
-
-function scoreHandler(newScoreObject) {
-    if (newScoreObject.leaderboard === "dailyScores") {
-        dailyScores = updateLeaderboard(newScoreObject, dailyScores);
-        return dailyScores;
-    }
-    else if (newScoreObject.leaderboard === "allTimeScores") {
-        allTimeScores = updateLeaderboard(newScoreObject, allTimeScores);
-        return allTimeScores;
-    }
-}
+// let currentMidnight = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 23, 59, 59, 999);
+let currentMidnight = new Date();
+// currentMidnight.setHours(23, 59, 59, 999);
+currentMidnight.setHours(12, 48, 0, 0);
 
 function updateLeaderboard(newScoreObject, scores) {
     let found = false;
@@ -79,4 +73,14 @@ function updateLeaderboard(newScoreObject, scores) {
     }
 
     return scores;
+}
+
+// Used to reset the daily leaderboard after midnight
+function resetMidnight() {
+    let now = new Date();
+    // This will execute when the current time passes the currently stored midnight
+    if (now.getTime() > currentMidnight) {
+        dailyScores = [];
+        currentMidnight = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 23, 59, 59, 999);
+    }
 }
