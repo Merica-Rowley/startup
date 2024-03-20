@@ -1,5 +1,8 @@
+const cookieParser = require('cookie-parser');
+const bcrypt = require('bcrypt');
 const express = require('express');
 const app = express();
+const DB = require('./database.js');
 
 // The service port. In production the frontend code is statically hosted by the service on the same port.
 const port = process.argv.length > 2 ? process.argv[2] : 4000;
@@ -16,7 +19,7 @@ app.use(`/api`, apiRouter);
 
 // Get Daily Scores
 apiRouter.get('/scores/daily', (_req, res) => {
-    resetMidnight();
+    // resetMidnight(); // moved midnight functionality to database.js
     res.send(dailyScores);
 });
 
@@ -49,8 +52,9 @@ app.listen(port, () => {
 
 let dailyScores = [];
 let allTimeScores = [];
-let currentMidnight = new Date();
-currentMidnight.setHours(23, 59, 59, 999);
+// Moved midnight reset to database
+// let currentMidnight = new Date();
+// currentMidnight.setHours(23, 59, 59, 999);
 
 function updateLeaderboard(newScoreObject, scores) {
     let found = false;
@@ -73,12 +77,13 @@ function updateLeaderboard(newScoreObject, scores) {
     return scores;
 }
 
-// Used to reset the daily leaderboard after midnight
-function resetMidnight() {
-    let now = new Date();
-    // This will execute when the current time passes the currently stored midnight
-    if (now.getTime() > currentMidnight) {
-        dailyScores = [];
-        currentMidnight = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 23, 59, 59, 999);
-    }
-}
+// Moved to database.js
+// // Used to reset the daily leaderboard after midnight
+// function resetMidnight() {
+//     let now = new Date();
+//     // This will execute when the current time passes the currently stored midnight
+//     if (now.getTime() > currentMidnight) {
+//         dailyScores = [];
+//         currentMidnight = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 23, 59, 59, 999);
+//     }
+// }
