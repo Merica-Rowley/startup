@@ -47,9 +47,12 @@ async function createUser(username, password) {
 }
 
 // Inserts a score into both daily and allTime score collections
-function addScore(score) {
-    dailyScoreCollection.insertOne(score)
-    allTimeScoreCollection.insertOne(score)
+function addDailyScore(score) {
+    dailyScoreCollection.insertOne(score);
+}
+
+function addAllTimeScore(score) {
+    allTimeScoreCollection.insertOne(score);
 }
 
 // Return the top 10 scores from the dailyScoreCollection as an array
@@ -92,7 +95,8 @@ module.exports = {
     getUser,
     getUserByToken,
     createUser,
-    addScore,
+    addDailyScore,
+    addAllTimeScore,
     getDailyScores,
     getAllTimeScores
 };

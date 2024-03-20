@@ -18,24 +18,35 @@ const apiRouter = express.Router();
 app.use(`/api`, apiRouter);
 
 // Get Daily Scores
-apiRouter.get('/scores/daily', (_req, res) => {
+apiRouter.get('/scores/daily', async (_req, res) => {
     // resetMidnight(); // moved midnight functionality to database.js
+    const dailyScores = await DB.getDailyScores();
     res.send(dailyScores);
 });
 
 // Get All Time Scores
-apiRouter.get('/scores/allTime', (_req, res) => {
+apiRouter.get('/scores/allTime', async (_req, res) => {
+    const allTimeScores = await DB.getAllTimeScores();
     res.send(allTimeScores);
 });
 
 // SubmitScore
-apiRouter.post('/score', (req, res) => {
+apiRouter.post('/score', async (req, res) => {
+    const newScore = {
+        username: req.body.username,
+        score: req.body.score
+    }
+
     if (req.body.leaderboard === "dailyScores") {
-        dailyScores = updateLeaderboard(req.body, dailyScores);
+        // const dailyScores = updateLeaderboard(req.body, dailyScores);
+        await DB.addDailyScore(newScore);
+        const dailyScores = await DB.getDailyScores();
         res.send(dailyScores);
     }
     else if (req.body.leaderboard === "allTimeScores") {
-        allTimeScores = updateLeaderboard(req.body, allTimeScores);
+        // const allTimeScores = updateLeaderboard(req.body, allTimeScores);
+        await DB.addAllTimeScore(newScore);
+        const allTimeScores = await DB.getAllTimeScores();
         res.send(allTimeScores);
     }
 });
@@ -49,6 +60,9 @@ app.listen(port, () => {
     console.log(`Listening on port ${port}`);
 });
 
+// _-_-__-_-___-_-_-_--__-_--_--_-__-----__-_-__-____-__
+
+/*
 
 let dailyScores = [];
 let allTimeScores = [];
@@ -76,6 +90,8 @@ function updateLeaderboard(newScoreObject, scores) {
 
     return scores;
 }
+
+*/
 
 // Moved to database.js
 // // Used to reset the daily leaderboard after midnight
