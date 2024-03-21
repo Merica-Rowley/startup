@@ -40,7 +40,8 @@
                     <div class="card-title">
                         <h2 class="display-5 fw-bold lh-1 text-body-emphasis mb-3">Welcome</h2>
                     </div>
-                    <form method="get" action="quiz.html">
+                    <!--Login form displayed when user is not logged in-->
+                    <form id="login-form" method="get">
                         <div>
                             <div class="input-group mb-3">
                                 <span class="input-group-text">@</span>
@@ -60,9 +61,14 @@
                         </div>
                         <div class="d-grid gap-2 col-6 mx-auto">
                             <button class="btn btn-bd-primary" type="submit" onclick="login()">Login</button>
-                            <button class="btn btn-bd-secondary" type="submit" onclick="login()">Create</button>
+                            <button class="btn btn-bd-secondary" type="submit" onclick="create()">Create</button>
                         </div>
                     </form>
+                    <!--Controls shown when user is already logged in-->
+                    <div class="d-grid gap-2 col-6 mx-auto">
+                        <button class="btn btn-bd-primary" type="submit" onclick="quiz()">Play</button>
+                        <button class="btn btn-bd-secondary" type="submit" onclick="logout()">Logout</button>
+                    </div>
                 </div>
             </div>
         </section>
