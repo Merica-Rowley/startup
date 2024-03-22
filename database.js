@@ -58,7 +58,7 @@ function addAllTimeScore(score) {
 // Return the top 10 scores from the dailyScoreCollection as an array
 function getDailyScores() {
     resetMidnight();
-    const query = { score: { $gt: 0, $lt: 900 } };
+    const query = { score: { $gt: 0 } };
     const options = {
         sort: { score: -1 },
         limit: 10,
@@ -69,7 +69,7 @@ function getDailyScores() {
 
 // Return the top 10 scores from the allTimeScoreCollection as an array
 function getAllTimeScores() {
-    const query = { score: { $gt: 0, $lt: 900 } };
+    const query = { score: { $gt: 0 } };
     const options = {
         sort: { score: -1 },
         limit: 10,

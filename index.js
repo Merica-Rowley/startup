@@ -75,7 +75,15 @@ apiRouter.post('/create', async (req, res) => {
 
 // Login user
 apiRouter.post('/login', async (req, res) => {
-    console.log('logging in');
+    const user = await DB.getUser(req.body.username);
+    if (user) {
+        if (await bcrypt.compare(req.body.password, user.password)) {
+            setAuthCookie(res, user.token);
+            res.send({ id: user._id });
+            return;
+        }
+    }
+    res.status(401).send({ msg: 'Unauthorized' });
 });
 
 // Logout user
