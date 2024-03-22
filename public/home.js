@@ -22,6 +22,14 @@
         if (playButtonsElement) {
             playButtonsElement.style.display = 'block';
         }
+
+        const navElement = document.querySelector('#navigationMenu');
+        navElement.innerHTML = `
+                            <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+                            <li class="nav-item"><a class="nav-link" href="quiz.html">Quiz</a></li>
+                            <li class="nav-item"><a class="nav-link" href="scores.html">Scores</a></li>
+                            <li class="nav-item"><a class="nav-link" href="info.html">Info</a></li>`;
+
     } else {
         const loginFormElement = document.querySelector('#login-form');
         if (loginFormElement) {

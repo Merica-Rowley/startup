@@ -19,15 +19,10 @@
                 <div class="container-fluid">
                     <a class="navbar-brand" href="index.html">Musicards</a>
                     <div class="collapse navbar-collapse">
-                        <ul class="navbar-nav nav-pills me-auto mb-2 mb-lg-0">
-                            <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
-                            <li class="nav-item"><a class="nav-link" href="quiz.html">Quiz</a></li>
-                            <li class="nav-item"><a class="nav-link" href="scores.html">Scores</a></li>
-                            <li class="nav-item"><a class="nav-link" href="info.html">Info</a></li>
+                        <ul class="navbar-nav nav-pills me-auto mb-2 mb-lg-0" id="navigationMenu">
+                            <!--Navigation elements are added and shown if user is logged in; otherwise, menu options are not available-->
                         </ul>
                         <p id="user-welcome">Welcome!</p>
-                        <!-- <a class="nav-link disabled" aria-disabled="true">Welcome,
-                            Username!</a> -->
                     </div>
                 </div>
             </nav>
@@ -73,9 +68,8 @@
         </section>
 
         <!--Modal to show login errors-->
-        <div class="modal fade" id="errorModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-            aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal fade" id="errorModal" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title">Oops!</h5>
