@@ -103,3 +103,19 @@ Service Implementation:
 - Third-Party Service Endpoints: Done! I used Lorem Picsum's api to retrieve a random image to display on the scores page using a fetch method.
 - Backend Service Endpoints: Done! I have an endpoint to update (post) the scoreboard each time someone gets an answer wrong or navigates away from the quiz page. I also have an endpoint to retrieve (get) scores from the server when a user navigates to the scores page.
 - Frontend Calls Service Endpoints: Done! I used a fetch method in the frontend quiz.js updateScores() method to call my score posting endpoint in the backend, and I used a fetch method in the frontend scores.js loadDailyScoreboard() and loadAllTimeScoreboard() functions to call my score retrieval endpoint in the backend. 
+
+## Login Deliverable
+For this deliverable, I implemented application authorization and authentication.
+
+Prerequisites:
+- Prerequisite: (COMPLETED) Simon Login deployed to your production environment with your dbConfig.json credentials
+- Prerequisite: (COMPLETED) A link to your GitHub startup repository prominently displayed on your application's home page
+- Prerequisite: (COMPLETED) Notes in your startup Git repository README.md file documenting what you modified and added with this deliverable. The TAs will only grade things that have been clearly described as being completed. Review the voter app as an example.
+- Prerequisite: (COMPLETED) At least 10 git commits spread consistently throughout the assignment period.
+
+Login Implementation:
+- New User Registration: Users can sign up for an account with a username and password; their credentials are stored in the MongoDB database.
+- Existing User Authentication: Users sign in with the username and password used to create their account.
+- Application Data Stored in MongoDB: Both daily and all time leaderboards are stored in the database. Daily leaderboard is reset (all elements deleted) every night at midnight. The "current midnight" is also stored in the database.
+- Storage and Retrieval of Credentials in MongoDB: User information is stored in the database. Passwords are encrypted using bcrypt. For authentication, user information is pulled from the database and compared to user inputs.
+- Application Restrictions Based on Authentication: Only authenticated users can see the navigation menu bar. Additionally, only authenticated users can see scores on the scores page and play the quiz on the quiz page. 
