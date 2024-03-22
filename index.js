@@ -22,39 +22,6 @@ app.use(express.static('public'));
 const apiRouter = express.Router();
 app.use(`/api`, apiRouter);
 
-// Get Daily Scores
-apiRouter.get('/scores/daily', async (_req, res) => {
-    const dailyScores = await DB.getDailyScores();
-    res.send(dailyScores);
-});
-
-// Get All Time Scores
-apiRouter.get('/scores/allTime', async (_req, res) => {
-    const allTimeScores = await DB.getAllTimeScores();
-    res.send(allTimeScores);
-});
-
-// SubmitScore
-apiRouter.post('/score', async (req, res) => {
-    const newScore = {
-        username: req.body.username,
-        score: req.body.score
-    }
-
-    if (req.body.leaderboard === "dailyScores") {
-        // const dailyScores = updateLeaderboard(req.body, dailyScores);
-        await DB.addDailyScore(newScore);
-        const dailyScores = await DB.getDailyScores();
-        res.send(dailyScores);
-    }
-    else if (req.body.leaderboard === "allTimeScores") {
-        // const allTimeScores = updateLeaderboard(req.body, allTimeScores);
-        await DB.addAllTimeScore(newScore);
-        const allTimeScores = await DB.getAllTimeScores();
-        res.send(allTimeScores);
-    }
-});
-
 // Create user
 apiRouter.post('/create', async (req, res) => {
     if (await DB.getUser(req.body.username)) {
@@ -89,6 +56,53 @@ apiRouter.post('/login', async (req, res) => {
 apiRouter.delete('/logout', async (req, res) => {
     res.clearCookie(authCookieName);
     res.status(204).end();
+});
+
+// Using secureApiRouter makes it so that scores can only be obained or submitted if a user is logged in
+var secureApiRouter = express.Router();
+apiRouter.use(secureApiRouter);
+
+secureApiRouter.use(async (req, res, next) => {
+    authToken = req.cookies[authCookieName];
+    const user = await DB.getUserByToken(authToken);
+    if (user) {
+        next();
+    } else {
+        res.status(401).send({ msg: 'Unauthorized' });
+    }
+});
+
+// Get Daily Scores
+secureApiRouter.get('/scores/daily', async (_req, res) => {
+    const dailyScores = await DB.getDailyScores();
+    res.send(dailyScores);
+});
+
+// Get All Time Scores
+secureApiRouter.get('/scores/allTime', async (_req, res) => {
+    const allTimeScores = await DB.getAllTimeScores();
+    res.send(allTimeScores);
+});
+
+// SubmitScore
+secureApiRouter.post('/score', async (req, res) => {
+    const newScore = {
+        username: req.body.username,
+        score: req.body.score
+    }
+
+    if (req.body.leaderboard === "dailyScores") {
+        // const dailyScores = updateLeaderboard(req.body, dailyScores);
+        await DB.addDailyScore(newScore);
+        const dailyScores = await DB.getDailyScores();
+        res.send(dailyScores);
+    }
+    else if (req.body.leaderboard === "allTimeScores") {
+        // const allTimeScores = updateLeaderboard(req.body, allTimeScores);
+        await DB.addAllTimeScore(newScore);
+        const allTimeScores = await DB.getAllTimeScores();
+        res.send(allTimeScores);
+    }
 });
 
 // Default error handler

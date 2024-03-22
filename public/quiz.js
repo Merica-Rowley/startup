@@ -53,9 +53,11 @@ class Quiz {
             await this.checkAnswer();
             this.streakManager();
             this.questionSetUp();
-        }
-        else {
-            alert("Please sign in to play!");
+        } else {
+            const modalElement = document.querySelector('#errorModal');
+            modalElement.querySelector('.modal-body').textContent = 'Please sign in to play!';
+            const msgModal = new bootstrap.Modal(modalElement, {});
+            msgModal.show();
         }
     }
 
@@ -112,7 +114,7 @@ class Quiz {
         if (this.answeredCorrectly) {
             this.streak++;
         } else {
-            this.saveScore(); // saves user's score to leaderboard (if applicable) before reseting the streak to 0
+            this.saveScore(); // saves user's score to leaderboard before reseting the streak to 0
             this.streak = 0;
         }
         document.querySelector("#streak").textContent = this.streak;
