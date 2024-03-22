@@ -60,9 +60,9 @@ async function loginOrCreate(endpoint) {
     } else {
         // TODO: create modal-body in html (see Simon for example) !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         const body = await response.json();
-        const modalEl = document.querySelector('#msgModal');
-        modalEl.querySelector('.modal-body').textContent = `⚠ Error: ${body.msg}`;
-        const msgModal = new bootstrap.Modal(modalEl, {});
+        const modalElement = document.querySelector('#errorModal');
+        modalElement.querySelector('.modal-body').textContent = `${body.msg}`;
+        const msgModal = new bootstrap.Modal(modalElement, {});
         msgModal.show();
     }
 }

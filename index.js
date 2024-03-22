@@ -59,7 +59,7 @@ apiRouter.post('/score', async (req, res) => {
 // Create user
 apiRouter.post('/create', async (req, res) => {
     if (await DB.getUser(req.body.username)) {
-        res.status(409).send({ msg: 'Existing user' });
+        res.status(409).send({ msg: 'This username is taken. Please choose another name.' });
     } else {
         const user = await DB.createUser(req.body.username, req.body.password);
 
@@ -83,7 +83,7 @@ apiRouter.post('/login', async (req, res) => {
             return;
         }
     }
-    res.status(401).send({ msg: 'Unauthorized' });
+    res.status(401).send({ msg: 'Incorrect username or password. Please try again.' });
 });
 
 // Logout user
@@ -114,47 +114,3 @@ function setAuthCookie(res, authToken) {
 app.listen(port, () => {
     console.log(`Listening on port ${port}`);
 });
-
-// _-_-__-_-___-_-_-_--__-_--_--_-__-----__-_-__-____-__
-
-/*
-
-let dailyScores = [];
-let allTimeScores = [];
-// Moved midnight reset to database
-// let currentMidnight = new Date();
-// currentMidnight.setHours(23, 59, 59, 999);
-
-function updateLeaderboard(newScoreObject, scores) {
-    let found = false;
-    for (const [i, prevScore] of scores.entries()) {
-        if (newScoreObject.score > prevScore.score) {
-            scores.splice(i, 0, newScoreObject);
-            found = true;
-            break;
-        }
-    }
-
-    if (!found) {
-        scores.push(newScoreObject);
-    }
-
-    if (scores.length > 10) {
-        scores.length = 10;
-    }
-
-    return scores;
-}
-
-*/
-
-// Moved to database.js
-// // Used to reset the daily leaderboard after midnight
-// function resetMidnight() {
-//     let now = new Date();
-//     // This will execute when the current time passes the currently stored midnight
-//     if (now.getTime() > currentMidnight) {
-//         dailyScores = [];
-//         currentMidnight = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 23, 59, 59, 999);
-//     }
-// }
