@@ -26,6 +26,10 @@ app.use(`/api`, apiRouter);
 apiRouter.post('/create', async (req, res) => {
     if (await DB.getUser(req.body.username)) {
         res.status(409).send({ msg: 'This username is taken. Please choose another name.' });
+    } else if (req.body.username.length == 0) {
+        res.status(406).send({ msg: 'Please enter a valid username.' });
+    } else if (req.body.password.length == 0) {
+        res.status(406).send({ msg: 'Please enter a valid password.' });
     } else {
         const user = await DB.createUser(req.body.username, req.body.password);
 
