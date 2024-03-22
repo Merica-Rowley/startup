@@ -9,6 +9,7 @@ const db = client.db('musicards');
 const userCollection = db.collection('user');
 const dailyScoreCollection = db.collection('dailyScores');
 const allTimeScoreCollection = db.collection('allTimeScores');
+const midnightCollection = db.collection('midnight');
 
 // This will asynchronously test the connection and exit the process if it fails
 (async function testConnection() {
@@ -57,7 +58,7 @@ function addAllTimeScore(score) {
 
 // Return the top 10 scores from the dailyScoreCollection as an array
 function getDailyScores() {
-    resetMidnight();
+    resetDailyScores()
     const query = { score: { $gt: 0 } };
     const options = {
         sort: { score: -1 },
@@ -78,16 +79,35 @@ function getAllTimeScores() {
     return cursor.toArray();
 }
 
-let currentMidnight = new Date();
-currentMidnight.setHours(23, 59, 59, 999);
+// Functions to help reset the daily leaderboard at midnight
+function setMidnight(newMidnight) {
+    midnightCollection.deleteMany({});
+    midnightCollection.insertOne({ midnight: newMidnight });
+}
+
+async function getMidnight() {
+    const cursor = midnightCollection.find();
+    const midnightArray = await cursor.toArray();
+
+    if (midnightArray.length == 0) {
+        let currentMidnight = new Date(Date.now());
+        currentMidnight.setUTCHours(23, 59, 59, 999);
+        await setMidnight(currentMidnight);
+        return currentMidnight;
+    }
+
+    return midnightArray[0].midnight;
+}
 
 // Used to reset the daily leaderboard after midnight
-function resetMidnight() {
-    let now = new Date();
+async function resetDailyScores() {
+    let now = new Date(Date.now());
+    let currentMidnight = await getMidnight();
     // This will execute when the current time passes the currently stored midnight
-    if (now.getTime() > currentMidnight) {
+    if (now.getTime() > currentMidnight.getTime()) {
         dailyScoreCollection.deleteMany({})
-        currentMidnight = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 23, 59, 59, 999);
+        const newMidnight = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 23, 59, 59, 999);
+        setMidnight(newMidnight);
     }
 }
 
@@ -98,5 +118,6 @@ module.exports = {
     addDailyScore,
     addAllTimeScore,
     getDailyScores,
-    getAllTimeScores
+    getAllTimeScores,
+    setMidnight
 };

@@ -58,7 +58,6 @@ async function loginOrCreate(endpoint) {
         localStorage.setItem('username', username);
         window.location.href = 'quiz.html';
     } else {
-        // TODO: create modal-body in html (see Simon for example) !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         const body = await response.json();
         const modalElement = document.querySelector('#errorModal');
         modalElement.querySelector('.modal-body').textContent = `${body.msg}`;

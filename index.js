@@ -24,7 +24,6 @@ app.use(`/api`, apiRouter);
 
 // Get Daily Scores
 apiRouter.get('/scores/daily', async (_req, res) => {
-    // resetMidnight(); // moved midnight functionality to database.js
     const dailyScores = await DB.getDailyScores();
     res.send(dailyScores);
 });
