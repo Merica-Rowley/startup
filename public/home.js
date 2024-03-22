@@ -8,6 +8,31 @@
     }
 })();
 
+(async () => {
+    const username = localStorage.getItem('username');
+    if (username) {
+        const loginFormElement = document.querySelector("#login-form");
+        if (loginFormElement) {
+            loginFormElement.style.display = 'none';
+        }
+
+        const playButtonsElement = document.querySelector("#play-buttons");
+        if (playButtonsElement) {
+            playButtonsElement.style.display = 'block';
+        }
+    } else {
+        const loginFormElement = document.querySelector("#login-form");
+        if (loginFormElement) {
+            loginFormElement.style.display = 'block';
+        }
+
+        const playButtonsElement = document.querySelector("#play-buttons");
+        if (playButtonsElement) {
+            playButtonsElement.style.display = 'none';
+        }
+    }
+})();
+
 function login() {
     const nameElement = document.querySelector("#usernameInput");
     localStorage.setItem("username", nameElement.value);
@@ -19,7 +44,7 @@ function create() {
 }
 
 function logout() {
-
+    localStorage.removeItem('username');
 }
 
 function quiz() {

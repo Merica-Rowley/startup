@@ -51,6 +51,13 @@ apiRouter.post('/score', async (req, res) => {
     }
 });
 
+// Create user
+
+// Login user
+
+// Logout user
+
+
 // Return the application's default page if the path is unknown
 app.use((_req, res) => {
     res.sendFile('index.html', { root: 'public' });

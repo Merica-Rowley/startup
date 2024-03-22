@@ -41,7 +41,29 @@
                         <h2 class="display-5 fw-bold lh-1 text-body-emphasis mb-3">Welcome</h2>
                     </div>
                     <!--Login form displayed when user is not logged in-->
-                    <form id="login-form" method="get">
+                    <div id="login-form" style="display: none">
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">@</span>
+                            <div class="form-floating">
+                                <input type="text" class="form-control" id="usernameInput" placeholder="Username">
+                                <label for="usernameInput">Username</label>
+                            </div>
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">&#128274;</span>
+                            <div class="form-floating">
+                                <input type="password" class="form-control" id="passwordInput" placeholder="Password">
+                                <label for=" passwordInput">Password</label>
+                            </div>
+                        </div>
+                        <div class="d-grid gap-2 col-6 mx-auto">
+                            <button class="btn btn-bd-primary" type="submit" onclick="login()">Login</button>
+                            <button class="btn btn-bd-secondary" type="submit" onclick="create()">Create</button>
+                        </div>
+                    </div>
+
+
+                    <!-- <form id="login-form" method="get" style="display: none">
                         <div>
                             <div class="input-group mb-3">
                                 <span class="input-group-text">@</span>
@@ -63,11 +85,14 @@
                             <button class="btn btn-bd-primary" type="submit" onclick="login()">Login</button>
                             <button class="btn btn-bd-secondary" type="submit" onclick="create()">Create</button>
                         </div>
-                    </form>
+                    </form> -->
+
                     <!--Controls shown when user is already logged in-->
-                    <div class="d-grid gap-2 col-6 mx-auto">
-                        <button class="btn btn-bd-primary" type="submit" onclick="quiz()">Play</button>
-                        <button class="btn btn-bd-secondary" type="submit" onclick="logout()">Logout</button>
+                    <div id="play-buttons" style="display: none">
+                        <div class="d-grid gap-2 col-6 mx-auto">
+                            <button class="btn btn-bd-primary" type="submit" onclick="quiz()">Play</button>
+                            <button class="btn btn-bd-secondary" type="submit" onclick="logout()">Logout</button>
+                        </div>
                     </div>
                 </div>
             </div>
