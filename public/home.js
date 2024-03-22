@@ -71,7 +71,7 @@ function logout() {
     localStorage.removeItem('username');
     fetch('/api/logout', {
         method: 'delete'
-    }).then(() => (window.href.location = 'index.html'));
+    }).then(() => (window.location.href = 'index.html'));
 }
 
 function quiz() {

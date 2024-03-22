@@ -88,7 +88,8 @@ apiRouter.post('/login', async (req, res) => {
 
 // Logout user
 apiRouter.delete('/logout', async (req, res) => {
-    console.log('logging out');
+    res.clearCookie(authCookieName);
+    res.status(204).end();
 });
 
 // Default error handler
