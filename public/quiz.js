@@ -69,6 +69,9 @@ class Quiz {
             this.userAnswer = buttonPressed.textContent
             await this.checkAnswer();
             this.streakManager();
+            if ((this.streak > 0) && (this.streak % 10 === 0)) {
+                this.broadcastEvent(this.userName, QuizMilestoneEvent, this.streak);
+            }
             this.questionSetUp();
         } else {
             const modalElement = document.querySelector('#errorModal');
@@ -236,19 +239,3 @@ class Quiz {
 const quiz = new Quiz();
 quiz.questionSetUp();
 quiz.broadcastEvent(this.userName, QuizStartEvent, {});
-
-/////////////////////////////////// WEBSOCKET PLACEHOLDER CONTENT ///////////////////////////////////////
-// setInterval(function () {
-//     const websocketElement = document.querySelector("#websocket-placeholder");
-//     if (Math.random() > 0.5) {
-//         websocketElement.innerHTML = '<p>User52 just started practicing with flashcards!</p>' + websocketElement.innerHTML;
-//     }
-//     else {
-//         websocketElement.innerHTML = '<p>0074ghost just reached a streak of 50!</p>' + websocketElement.innerHTML;
-//     }
-
-//     while (websocketElement.children.length > 3) {
-//         websocketElement.removeChild(websocketElement.lastChild);
-//     }
-
-// }, Math.floor((Math.random() * 5000) + 2000)) // output string between every 1-5 seconds
