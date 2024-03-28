@@ -97,14 +97,12 @@ secureApiRouter.post('/score', async (req, res) => {
     }
 
     if (req.body.leaderboard === "dailyScores") {
-        // const dailyScores = updateLeaderboard(req.body, dailyScores);
-        await DB.addDailyScore(newScore);
+        DB.addDailyScore(newScore);
         const dailyScores = await DB.getDailyScores();
         res.send(dailyScores);
     }
     else if (req.body.leaderboard === "allTimeScores") {
-        // const allTimeScores = updateLeaderboard(req.body, allTimeScores);
-        await DB.addAllTimeScore(newScore);
+        DB.addAllTimeScore(newScore);
         const allTimeScores = await DB.getAllTimeScores();
         res.send(allTimeScores);
     }

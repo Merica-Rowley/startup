@@ -1,3 +1,4 @@
+// Strings to signal different events
 const QuizStartEvent = "quizStart";
 const QuizMilestoneEvent = "quizMilestone";
 const QuizEndEvent = "quizEnd";
@@ -68,7 +69,7 @@ class Quiz {
         if (this.userName) { // ensures that only signed-in users can play the quiz
             this.userAnswer = buttonPressed.textContent
             await this.checkAnswer();
-            this.streakManager();
+            await this.streakManager();
             if ((this.streak > 0) && (this.streak % 10 === 0)) {
                 this.broadcastEvent(this.userName, QuizMilestoneEvent, this.streak);
             }
@@ -130,11 +131,11 @@ class Quiz {
         this.populateButtons();
     }
 
-    streakManager() {
+    async streakManager() {
         if (this.answeredCorrectly) {
             this.streak++;
         } else {
-            this.saveScore(); // saves user's score to leaderboard before reseting the streak to 0
+            await this.saveScore(); // saves user's score to leaderboard before reseting the streak to 0
             this.streak = 0;
         }
         document.querySelector("#streak").textContent = this.streak;

@@ -12,6 +12,7 @@ function peerProxy(httpServer) {
         });
     });
 
+    // Array to keep track of WebSocket connections
     let connections = [];
 
     wss.on('connection', (ws) => {
