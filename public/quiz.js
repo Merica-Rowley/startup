@@ -218,6 +218,9 @@ class Quiz {
     displayMessage(messageText) {
         const websocketElement = document.querySelector("#websocket-placeholder");
         websocketElement.innerHTML = `<p>${messageText}</p>` + websocketElement.innerHTML;
+        while (websocketElement.children.length > 3) {
+            websocketElement.removeChild(websocketElement.lastChild);
+        }
     }
 
     broadcastEvent(from, type, value) {
