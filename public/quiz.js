@@ -2,6 +2,17 @@ const QuizStartEvent = "quizStart";
 const QuizMilestoneEvent = "quizMilestone";
 const QuizEndEvent = "quizEnd";
 
+// Set "Welcome user!" element in top right
+(async () => {
+    const playerWelcomeElement = document.querySelector("#user-welcome");
+    playerName = localStorage.getItem("username") ?? "";
+    if (playerName) {
+        playerWelcomeElement.textContent = "Welcome " + playerName + "!";
+    } else {
+        playerWelcomeElement.textContent = "Welcome!";
+    }
+})();
+
 // 26 possible images
 const answerKey = [
     { image: "Bass A3.png", answer: "A" },
@@ -122,7 +133,6 @@ class Quiz {
         } else {
             this.saveScore(); // saves user's score to leaderboard before reseting the streak to 0
             this.streak = 0;
-            this.broadcastEvent(this.userName, QuizStartEvent, {});
         }
         document.querySelector("#streak").textContent = this.streak;
     }
@@ -131,6 +141,7 @@ class Quiz {
         if (!(this.streak === 0)) {
             const username = localStorage.getItem("username");
             const score = this.streak;
+            this.broadcastEvent(username, QuizEndEvent, score);
             await this.updateScores(username, score, "dailyScores");
             await this.updateScores(username, score, "allTimeScores");
         }
@@ -194,6 +205,12 @@ class Quiz {
             if (msg.type === QuizStartEvent) {
                 this.displayMessage(`${msg.from} just started practicing with flashcards!`);
             }
+            else if (msg.type === QuizEndEvent) {
+                this.displayMessage(`${msg.from} scored ${msg.value}`);
+            }
+            else if (msg.type === QuizMilestoneEvent) {
+                this.displayMessage(`${msg.from} just reached a streak of ${msg.value}`);
+            }
         }
 
     }
@@ -215,14 +232,7 @@ class Quiz {
 
 const quiz = new Quiz();
 quiz.questionSetUp();
-
-const playerWelcomeElement = document.querySelector("#user-welcome");
-playerName = localStorage.getItem("username") ?? "";
-if (playerName) {
-    playerWelcomeElement.textContent = "Welcome " + playerName + "!";
-} else {
-    playerWelcomeElement.textContent = "Welcome!";
-}
+quiz.broadcastEvent(this.userName, QuizStartEvent, {});
 
 /////////////////////////////////// WEBSOCKET PLACEHOLDER CONTENT ///////////////////////////////////////
 // setInterval(function () {
