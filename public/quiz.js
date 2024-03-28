@@ -1,3 +1,7 @@
+const QuizStartEvent = "quizStart";
+const QuizMilestoneEvent = "quizMilestone";
+const QuizEndEvent = "quizEnd";
+
 // 26 possible images
 const answerKey = [
     { image: "Bass A3.png", answer: "A" },
@@ -36,7 +40,8 @@ class Quiz {
     userAnswer;
     streak;
     answeredCorrectly;
-    signedIn;
+    userName;
+    socket;
 
     constructor() {
         this.correctAnswer = null;
@@ -44,11 +49,12 @@ class Quiz {
         this.userAnswer = null;
         this.streak = 0;
         this.answeredCorrectly = null;
-        this.signedIn = localStorage.getItem("username");
+        this.userName = localStorage.getItem("username");
+        this.configureWebSocket();
     }
 
     async pressButton(buttonPressed) {
-        if (this.signedIn) { // ensures that only signed-in users can play the quiz
+        if (this.userName) { // ensures that only signed-in users can play the quiz
             this.userAnswer = buttonPressed.textContent
             await this.checkAnswer();
             this.streakManager();
@@ -116,6 +122,7 @@ class Quiz {
         } else {
             this.saveScore(); // saves user's score to leaderboard before reseting the streak to 0
             this.streak = 0;
+            this.broadcastEvent(this.userName, QuizStartEvent, {});
         }
         document.querySelector("#streak").textContent = this.streak;
     }
@@ -174,6 +181,36 @@ class Quiz {
 
         localStorage.setItem(newScoreObject.leaderboard, JSON.stringify(scores));
     }
+
+    // WebSocket functions
+    configureWebSocket() {
+        const protocol = window.location.protocol === 'http:' ? 'ws' : 'wss';
+        this.socket = new WebSocket(`${protocol}://${window.location.host}/ws`);
+        this.socket.onopen = async (event) => {
+            this.broadcastEvent(this.userName, QuizStartEvent, {});
+        }
+        this.socket.onmessage = async (event) => {
+            const msg = JSON.parse(await event.data.text());
+            if (msg.type === QuizStartEvent) {
+                this.displayMessage(`${msg.from} just started practicing with flashcards!`);
+            }
+        }
+
+    }
+
+    displayMessage(messageText) {
+        const websocketElement = document.querySelector("#websocket-placeholder");
+        websocketElement.innerHTML = `<p>${messageText}</p>` + websocketElement.innerHTML;
+    }
+
+    broadcastEvent(from, type, value) {
+        const event = {
+            from: from,
+            type: type,
+            value: value,
+        };
+        this.socket.send(JSON.stringify(event));
+    }
 }
 
 const quiz = new Quiz();
@@ -188,17 +225,17 @@ if (playerName) {
 }
 
 /////////////////////////////////// WEBSOCKET PLACEHOLDER CONTENT ///////////////////////////////////////
-setInterval(function () {
-    const websocketElement = document.querySelector("#websocket-placeholder");
-    if (Math.random() > 0.5) {
-        websocketElement.innerHTML = '<p>User52 just started practicing with flashcards!</p>' + websocketElement.innerHTML;
-    }
-    else {
-        websocketElement.innerHTML = '<p>0074ghost just reached a streak of 50!</p>' + websocketElement.innerHTML;
-    }
+// setInterval(function () {
+//     const websocketElement = document.querySelector("#websocket-placeholder");
+//     if (Math.random() > 0.5) {
+//         websocketElement.innerHTML = '<p>User52 just started practicing with flashcards!</p>' + websocketElement.innerHTML;
+//     }
+//     else {
+//         websocketElement.innerHTML = '<p>0074ghost just reached a streak of 50!</p>' + websocketElement.innerHTML;
+//     }
 
-    while (websocketElement.children.length > 3) {
-        websocketElement.removeChild(websocketElement.lastChild);
-    }
+//     while (websocketElement.children.length > 3) {
+//         websocketElement.removeChild(websocketElement.lastChild);
+//     }
 
-}, Math.floor((Math.random() * 5000) + 2000)) // output string between every 1-5 seconds
+// }, Math.floor((Math.random() * 5000) + 2000)) // output string between every 1-5 seconds
